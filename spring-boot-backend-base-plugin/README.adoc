@@ -1,0 +1,8 @@
+== Plugin 'Spring Boot for backend (base)'
+
+Extends the plugins link:../spring-boot-backend-tests-plugin[spring-boot-backend-tests-plugin] and link:../spring-boot-backend-versions-plugin[spring-boot-backend-versions-plugin]
+
+1. Configures Spring support for the kotlin module
+2. Enables compilation of Spring Bean information in code at compilation
+3. Configures the Java version to compile
+4. Adds basic dependencies for a project

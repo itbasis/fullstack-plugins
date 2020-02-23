@@ -1,0 +1,6 @@
+== Plugin 'Spring Boot for backend (database support)'
+
+Extends the plugin link:../spring-boot-backend-library-plugin[spring-boot-backend-library-plugin]
+
+1. Adds JPA support for the Kotlin module
+2. Adds libraries for working with the database (PostgreSQL, Liquibase)

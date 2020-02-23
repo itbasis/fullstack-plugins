@@ -1,0 +1,15 @@
+= Gradle plugins
+
+include::./idea-module-root-plugin/README.adoc[]
+
+include::./spring-boot-backend-base-plugin/README.adoc[]
+
+include::./spring-boot-backend-versions-plugin/README.adoc[]
+
+include::./spring-boot-backend-tests-plugin/README.adoc[]
+
+include::./spring-boot-backend-library-plugin/README.adoc[]
+
+include::./spring-boot-backend-library-db-plugin/README.adoc[]
+
+include::./spring-boot-backend-service-plugin/README.adoc[]

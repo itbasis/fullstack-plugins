@@ -1,0 +1,5 @@
+== Plugin 'Spring Boot for backend (dependency version management)'
+
+1. Adds dependency versioning
+2. Prescribes basic versions that are not available in link:https://github.com/spring-projects/spring-boot/blob/2.2.x/spring-boot-project/spring-boot-dependencies/pom.xml[Spring Boot dependencies]
+3. Excludes dependencies on Tomcat

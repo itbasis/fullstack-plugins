@@ -1,0 +1,4 @@
+== Plugin 'Spring Boot for backend (service)'
+
+1. Adds dependencies for the service (web, undertow)
+2. Enables module assembly as a Spring Boot application
