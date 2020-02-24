@@ -17,7 +17,7 @@ dependencies {
 in modules (enable any of the plugins):
 ```gradle
 plugins {
-	// id("ru.itbasis.idea-module-root") - only root module
+    // id("ru.itbasis.idea-module-root") - only root module
     // id("ru.itbasis.spring-boot.backend-library-plugin")
     // id("ru.itbasis.spring-boot.backend-library-db-plugin")
     // id("ru.itbasis.spring-boot.backend-service-plugin")
