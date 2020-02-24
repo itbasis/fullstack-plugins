@@ -14,12 +14,15 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.*
 import org.gradle.language.base.plugins.LifecycleBasePlugin.CHECK_TASK_NAME
 import org.gradle.language.base.plugins.LifecycleBasePlugin.VERIFICATION_GROUP
+import org.gradle.plugins.ide.idea.IdeaPlugin
+import org.gradle.plugins.ide.idea.model.IdeaModel
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 class BackendTestsPlugin : Plugin<Project> {
 	override fun apply(target: Project): Unit = target.run {
 		apply<KotlinPluginWrapper>()
 		apply<DetektPlugin>()
+		apply<IdeaPlugin>()
 
 		configure<SourceSetContainer> {
 			val mainSourceSet = this.getAt("main")
@@ -42,6 +45,13 @@ class BackendTestsPlugin : Plugin<Project> {
 			reports {
 				html { enabled = false }
 				txt { enabled = false }
+			}
+		}
+
+		configure<IdeaModel> {
+			module {
+				testSourceDirs = testSourceDirs + itestSourceSet.allJava.srcDirs
+				testResourceDirs = testResourceDirs + itestSourceSet.resources.srcDirs
 			}
 		}
 

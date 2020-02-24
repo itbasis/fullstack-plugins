@@ -63,7 +63,6 @@ class BackendBasePlugin : Plugin<Project> {
 						javaVersion.isJava12Compatible -> JavaVersion.VERSION_12
 						else -> JavaVersion.VERSION_1_8
 					}).toString()
-					logger.lifecycle("use Kotlin jvmTarget: $jvmTarget")
 
 					@Suppress("SpellCheckingInspection")
 					freeCompilerArgs = freeCompilerArgs + listOf("-Xjsr305=strict", "-Xuse-experimental=kotlin.Experimental")
