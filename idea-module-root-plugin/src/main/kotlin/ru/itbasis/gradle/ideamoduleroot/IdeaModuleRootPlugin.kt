@@ -14,6 +14,10 @@ import org.jetbrains.gradle.ext.EncodingConfiguration.BomPolicy.WITH_BOM_ON_WIND
 @Suppress("unused")
 class IdeaModuleRootPlugin : Plugin<Project> {
 	override fun apply(target: Project): Unit = target.run {
+		check(target == rootProject) {
+			"The plugin can only be used in the root project."
+		}
+
 		apply<IdeaExtPlugin>()
 
 		configure<IdeaModel> {
