@@ -1,4 +1,4 @@
-rootProject.name = "itbasis-spring-boot-plugin"
+rootProject.name = "itbasis-fullstack-plugins"
 
 include("spring-boot-backend-tests-plugin")
 

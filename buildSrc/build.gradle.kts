@@ -1,17 +1,19 @@
 plugins {
 	`kotlin-dsl`
-	`maven-publish`
-
-	id("com.gradle.plugin-publish")
 }
 
-pluginBundle {
-	tags = listOf("ru.itbasis", "kotlin", "intellij", "idea", "settings")
+kotlinDslPluginOptions {
+	experimentalWarning.set(false)
+}
+
+repositories {
+	gradlePluginPortal()
+	jcenter()
 }
 
 gradlePlugin {
 	plugins {
-		register("plugin") {
+		register("ru.itbasis.idea-module-root") {
 			id = "ru.itbasis.idea-module-root"
 			implementationClass = "ru.itbasis.gradle.ideamoduleroot.IdeaModuleRootPlugin"
 		}
@@ -19,6 +21,10 @@ gradlePlugin {
 }
 
 val gradleIdeaExtVersion = extra["gradle-idea-ext.version"] as String
+
 dependencies {
 	api("gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:$gradleIdeaExtVersion")
+
+	api("com.gradle.publish:plugin-publish-plugin:+")
+	api("com.jfrog.bintray.gradle:gradle-bintray-plugin:+")
 }

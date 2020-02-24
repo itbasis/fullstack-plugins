@@ -1,6 +1,11 @@
 plugins {
 	`kotlin-dsl`
 	`maven-publish`
+	id("com.gradle.plugin-publish")
+}
+
+pluginBundle {
+	tags = listOf("ru.itbasis", "kotlin", "spring", "springframework", "spring-boot", "undertow")
 }
 
 gradlePlugin {

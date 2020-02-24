@@ -1,4 +1,7 @@
-= Gradle plugins
+= Gradle Fullstack plugins
+
+image:https://img.shields.io/badge/version-0.1-orange.svg[]
+image:https://img.shields.io/badge/License-MIT-blue.svg[https://lbesson.mit-license.org/]
 
 include::./idea-module-root-plugin/README.adoc[]
 
