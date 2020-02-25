@@ -1,13 +1,13 @@
+@file:Suppress("ktNoinlineFunc")
+
 package ru.itbasis.gradle.springboot.backend.versions
 
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.exclude
-import org.gradle.kotlin.dsl.repositories
-import org.gradle.kotlin.dsl.the
+import org.gradle.api.artifacts.DependencyResolveDetails
+import org.gradle.kotlin.dsl.*
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 class BackendVersionsPlugin : Plugin<Project> {
@@ -18,11 +18,24 @@ class BackendVersionsPlugin : Plugin<Project> {
 			jcenter()
 		}
 
+		mapOf(
+			"microutils.version" to "1.+",
+			"javafaker.version" to "1.+",
+			"kotest.version" to "4.+",
+			"korlibs.klock.version" to "1.+"
+		).filterKeys {
+			!extra.has(it)
+		}.forEach { (k, v) ->
+			extra[k] = v
+		}
+
 		the<DependencyManagementExtension>().apply {
 			imports {
 				mavenBom(SpringBootPlugin.BOM_COORDINATES)
 			}
 		}
+
+		fun DependencyResolveDetails.useExtraVersion(key: String): Unit = useVersion(extra["${key}.version"] as String)
 
 		configurations.all {
 			exclude(module = "spring-boot-starter-tomcat")
@@ -34,11 +47,10 @@ class BackendVersionsPlugin : Plugin<Project> {
 
 				eachDependency {
 					when (requested.group) {
-						"io.github.microutils" -> useVersion("1.7.8")
-						"io.kotest" -> useVersion("4.0.0-+")
-						"com.github.javafaker" -> useVersion("1.0.1")
-						"org.objenesis" -> useVersion("3.1")
-						"com.soywiz.korlibs.klock" -> useVersion("1.8.8")
+						"io.github.microutils" -> useExtraVersion("microutils")
+						"io.kotest" -> useExtraVersion("kotest")
+						"com.github.javafaker" -> useExtraVersion("javafaker")
+						"com.soywiz.korlibs.klock" -> useExtraVersion("korlibs.klock")
 					}
 				}
 			}

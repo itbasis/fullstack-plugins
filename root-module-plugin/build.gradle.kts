@@ -12,8 +12,8 @@ pluginBundle {
 gradlePlugin {
 	plugins {
 		register("plugin") {
-			id = "ru.itbasis.idea-module-root"
-			implementationClass = "ru.itbasis.gradle.ideamoduleroot.IdeaModuleRootPlugin"
+			id = "ru.itbasis.root-module"
+			implementationClass = "ru.itbasis.gradle.rootmodule.RootModulePlugin"
 		}
 	}
 }

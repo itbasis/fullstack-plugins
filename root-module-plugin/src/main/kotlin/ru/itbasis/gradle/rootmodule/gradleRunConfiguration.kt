@@ -1,4 +1,4 @@
-package ru.itbasis.gradle.ideamoduleroot
+package ru.itbasis.gradle.rootmodule
 
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project

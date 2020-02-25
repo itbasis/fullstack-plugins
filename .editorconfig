@@ -24,10 +24,6 @@ ij_kotlin_name_count_to_use_star_import             = 50
 ij_kotlin_name_count_to_use_star_import_for_members = 50
 ij_kotlin_import_nested_classes                     = true
 
-[*.yml]
-indent_style = space
-tab_width    = 2
-
 [.editorconfig]
 ij_editorconfig_align_group_field_declarations     = true
 ij_editorconfig_spaces_around_assignment_operators = true

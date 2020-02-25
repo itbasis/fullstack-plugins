@@ -1,6 +1,6 @@
 @file:Suppress("ktNoinlineFunc")
 
-package ru.itbasis.gradle.ideamoduleroot
+package ru.itbasis.gradle.rootmodule
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -11,7 +11,6 @@ import org.gradle.plugins.ide.idea.model.IdeaModel
 import org.jetbrains.gradle.ext.*
 import org.jetbrains.gradle.ext.EncodingConfiguration.BomPolicy.WITH_BOM_ON_WINDOWS
 
-@Suppress("unused")
 class IdeaModuleRootPlugin : Plugin<Project> {
 	override fun apply(target: Project): Unit = target.run {
 		check(target == rootProject) {
@@ -59,16 +58,6 @@ class IdeaModuleRootPlugin : Plugin<Project> {
 					}
 				}
 			}
-		}
-
-		gradleRunConfiguration(tasks = listOf("clean"))
-		gradleRunConfiguration(cfgSubName = "assemble", tasks = listOf("clean", "assemble"))
-		gradleRunConfiguration(cfgSubName = "all tests", tasks = listOf("assemble", "check"))
-		gradleRunConfiguration(cfgSubName = "wrapper, refresh dependencies", tasks = listOf("clean", "wrapper")) {
-			scriptParameters = "--refresh-dependencies"
-		}
-		gradleRunConfiguration(cfgSubName = "resources", tasks = listOf("processResources")) {
-			scriptParameters = "--rerun-tasks"
 		}
 	}
 }

@@ -1,23 +1,26 @@
 = Gradle Fullstack plugins
 
-image:https://img.shields.io/badge/version-0.1.1-orange.svg[https://bintray.com/borzdeg/ru.itbasis.gradle]
+image:https://img.shields.io/badge/version-0.2-orange.svg[https://bintray.com/borzdeg/ru.itbasis.gradle]
 image:https://img.shields.io/badge/License-MIT-blue.svg[https://lbesson.mit-license.org/]
 
 == use gradle
+
 `buildSrc/build.gradle.kts`:
+
 ```gradle
 repositories {
     maven(url = "https://dl.bintray.com/borzdeg/ru.itbasis.gradle")
 }
 dependencies {
-	api("ru.itbasis.gradle:spring-boot-backend-all-plugins:0.1.1")
+	api("ru.itbasis.gradle:spring-boot-backend-all-plugins:0.2")
 }
 ```
 
 in modules (enable any of the plugins):
+
 ```gradle
 plugins {
-    // id("ru.itbasis.idea-module-root") - only root module
+    // id("ru.itbasis.root-module") - only root module
     // id("ru.itbasis.spring-boot.backend-library-plugin")
     // id("ru.itbasis.spring-boot.backend-library-db-plugin")
     // id("ru.itbasis.spring-boot.backend-service-plugin")
@@ -25,7 +28,7 @@ plugins {
 }
 ```
 
-include::./idea-module-root-plugin/README.adoc[]
+include::./root-module-plugin/README.adoc[]
 
 include::./spring-boot-backend-base-plugin/README.adoc[]
 

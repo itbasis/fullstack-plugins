@@ -14,5 +14,5 @@ dependencies {
 	api(project(":spring-boot-backend-tests-plugin"))
 	api(project(":spring-boot-backend-versions-plugin"))
 
-	api(project(":idea-module-root-plugin"))
+	api(project(":root-module-plugin"))
 }

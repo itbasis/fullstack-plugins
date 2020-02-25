@@ -1,10 +1,10 @@
 import com.jfrog.bintray.gradle.BintrayExtension
 import com.jfrog.bintray.gradle.BintrayPlugin
-import ru.itbasis.gradle.ideamoduleroot.gradleRunConfiguration
+import ru.itbasis.gradle.rootmodule.gradleRunConfiguration
 
 plugins {
 	`maven-publish`
-	id("ru.itbasis.idea-module-root")
+	id("ru.itbasis.root-module")
 }
 
 subprojects {
@@ -31,7 +31,8 @@ subprojects {
 	}
 }
 
-gradleRunConfiguration(cfgSubName = "plugin publish", tasks = listOf("check", "bintrayUpload"))
+gradleRunConfiguration(cfgSubName = "publish (local)", tasks = listOf("check", "publishToMavenLocal"))
+gradleRunConfiguration(cfgSubName = "publish", tasks = listOf("check", "bintrayUpload"))
 gradleRunConfiguration(
 	cfgSubName = "resources",
 	tasks = listOf("processResources", "generatePomFileForPluginMavenPublication", "generateMetadataFileForPluginMavenPublication")

@@ -13,9 +13,9 @@ repositories {
 
 gradlePlugin {
 	plugins {
-		register("ru.itbasis.idea-module-root") {
-			id = "ru.itbasis.idea-module-root"
-			implementationClass = "ru.itbasis.gradle.ideamoduleroot.IdeaModuleRootPlugin"
+		register("ru.itbasis.root-module") {
+			id = "ru.itbasis.root-module"
+			implementationClass = "ru.itbasis.gradle.rootmodule.RootModulePlugin"
 		}
 	}
 }
