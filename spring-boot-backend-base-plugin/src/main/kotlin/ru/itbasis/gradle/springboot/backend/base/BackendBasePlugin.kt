@@ -53,7 +53,6 @@ class BackendBasePlugin : Plugin<Project> {
 			}
 
 			named(SpringBootPlugin.BOOT_JAR_TASK_NAME, BootJar::class) {
-				enabled = false
 				archiveClassifier.set("boot")
 			}
 
