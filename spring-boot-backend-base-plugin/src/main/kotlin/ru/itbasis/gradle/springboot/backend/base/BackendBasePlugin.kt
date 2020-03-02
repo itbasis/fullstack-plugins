@@ -5,7 +5,7 @@ package ru.itbasis.gradle.springboot.backend.base
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.plugins.JavaPlugin
+import org.gradle.api.plugins.JavaPlugin.JAR_TASK_NAME
 import org.gradle.api.plugins.JavaPluginConvention
 import org.gradle.jvm.tasks.Jar
 import org.gradle.kotlin.dsl.*
@@ -14,7 +14,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin
 import org.springframework.boot.gradle.dsl.SpringBootExtension
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
-import org.springframework.boot.gradle.tasks.bundling.BootJar
+import org.springframework.boot.gradle.plugin.SpringBootPlugin.BOOT_JAR_TASK_NAME
 import ru.itbasis.gradle.springboot.backend.tests.BackendTestsPlugin
 import ru.itbasis.gradle.springboot.backend.versions.BackendVersionsPlugin
 
@@ -48,12 +48,12 @@ class BackendBasePlugin : Plugin<Project> {
 		}
 
 		tasks {
-			named(JavaPlugin.JAR_TASK_NAME, Jar::class) {
+			named(JAR_TASK_NAME, Jar::class) {
 				enabled = true
 			}
 
-			named(SpringBootPlugin.BOOT_JAR_TASK_NAME, BootJar::class) {
-				archiveClassifier.set("boot")
+			named(BOOT_JAR_TASK_NAME) {
+				enabled = false
 			}
 
 			withType(KotlinJvmCompile::class) {

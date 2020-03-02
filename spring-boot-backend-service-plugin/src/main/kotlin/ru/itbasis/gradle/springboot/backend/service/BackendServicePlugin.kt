@@ -1,3 +1,5 @@
+@file:Suppress("ktNoinlineFunc")
+
 package ru.itbasis.gradle.springboot.backend.service
 
 import org.gradle.api.Plugin
@@ -8,12 +10,15 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin.BOOT_JAR_TASK_NAM
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 import ru.itbasis.gradle.springboot.backend.base.BackendBasePlugin
 
+@Suppress("unused")
 class BackendServicePlugin : Plugin<Project> {
 	override fun apply(target: Project): Unit = target.run {
 		apply<BackendBasePlugin>()
 
 		tasks.named(BOOT_JAR_TASK_NAME, BootJar::class.java) {
+			enabled = true
 			archiveBaseName.set("service")
+			archiveClassifier.set("boot")
 		}
 
 		dependencies {
