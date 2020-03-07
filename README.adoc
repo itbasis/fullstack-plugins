@@ -1,7 +1,10 @@
 = Gradle Fullstack plugins
 
-image:https://img.shields.io/badge/version-0.2-orange.svg[https://bintray.com/borzdeg/ru.itbasis.gradle]
-image:https://img.shields.io/badge/License-MIT-blue.svg[https://lbesson.mit-license.org/]
+
+image:https://img.shields.io/github/v/tag/borzdeg/itbasis-fullstack-plugins?label=Stable[GitHub tag (latest SemVer pre-release)]
+image:https://img.shields.io/github/v/tag/borzdeg/itbasis-fullstack-plugins?include_prereleases&label=Latest[GitHub tag (latest SemVer pre-release)]
+
+image:https://img.shields.io/github/license/borzdeg/itbasis-fullstack-plugins[GitHub]
 image:https://img.shields.io/badge/JVM-1.8+-green.svg[]
 
 == use gradle
