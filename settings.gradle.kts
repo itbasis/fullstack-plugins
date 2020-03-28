@@ -4,17 +4,20 @@ rootProject.name = "itbasis-fullstack-plugins"
 
 enableFeaturePreview(GRADLE_METADATA.name)
 
-include("spring-boot-backend-tests-plugin")
+include(":common:common-ide-idea")
+include(":common:common-backend")
 
-include("spring-boot-backend-versions-plugin")
-include("spring-boot-backend-library-plugin")
+include(":spring-boot-backend:spring-boot-backend-tests-plugin")
 
-include("spring-boot-backend-base-plugin")
+include(":spring-boot-backend:spring-boot-backend-versions-plugin")
+include(":spring-boot-backend:spring-boot-backend-library-plugin")
 
-include("spring-boot-backend-library-db-plugin")
+include(":spring-boot-backend:spring-boot-backend-base-plugin")
 
-include("spring-boot-backend-service-plugin")
+include(":spring-boot-backend:spring-boot-backend-library-db-plugin")
+
+include(":spring-boot-backend:spring-boot-backend-service-plugin")
 
 include("root-module-plugin")
 
-include("spring-boot-backend-all-plugins")
+//include(":spring-boot-backend:spring-boot-backend-all-plugins")

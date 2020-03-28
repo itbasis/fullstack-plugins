@@ -1,6 +1,5 @@
 = Gradle Fullstack plugins
 
-
 image:https://img.shields.io/github/v/tag/borzdeg/itbasis-fullstack-plugins?label=Stable[GitHub tag (latest SemVer pre-release)]
 image:https://img.shields.io/github/v/tag/borzdeg/itbasis-fullstack-plugins?include_prereleases&label=Latest[GitHub tag (latest SemVer pre-release)]
 
@@ -16,7 +15,7 @@ repositories {
     maven(url = "https://dl.bintray.com/borzdeg/ru.itbasis.gradle")
 }
 dependencies {
-	api("ru.itbasis.gradle:spring-boot-backend-all-plugins:0.2")
+	api("ru.itbasis.gradle:spring-boot-backend-all-plugins:0.3.3")
 }
 ----
 
@@ -35,14 +34,14 @@ plugins {
 
 include::./root-module-plugin/README.adoc[]
 
-include::./spring-boot-backend-base-plugin/README.adoc[]
+include::./spring-boot-backend/spring-boot-backend-base-plugin/README.adoc[]
 
-include::./spring-boot-backend-versions-plugin/README.adoc[]
+include::./spring-boot-backend/spring-boot-backend-versions-plugin/README.adoc[]
 
-include::./spring-boot-backend-tests-plugin/README.adoc[]
+include::./spring-boot-backend/spring-boot-backend-tests-plugin/README.adoc[]
 
-include::./spring-boot-backend-library-plugin/README.adoc[]
+include::./spring-boot-backend/spring-boot-backend-library-plugin/README.adoc[]
 
-include::./spring-boot-backend-library-db-plugin/README.adoc[]
+include::./spring-boot-backend/spring-boot-backend-library-db-plugin/README.adoc[]
 
-include::./spring-boot-backend-service-plugin/README.adoc[]
+include::./spring-boot-backend/spring-boot-backend-service-plugin/README.adoc[]
