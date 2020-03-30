@@ -7,8 +7,9 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPlugin.TEST_TASK_NAME
 import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.testing.Test
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
@@ -78,11 +79,12 @@ class BackendTestsPlugin : Plugin<Project> {
 			withType(Test::class) {
 				useJUnitPlatform()
 				maxParallelForks = Runtime.getRuntime().availableProcessors() / 2
+
 				testLogging {
 					showStandardStreams = true
 					showExceptions = true
-					events = setOf(TestLogEvent.FAILED, TestLogEvent.PASSED)
-					exceptionFormat = TestExceptionFormat.FULL
+					events = setOf(FAILED, PASSED)
+					exceptionFormat = FULL
 				}
 				environment("ROOT_DIR", rootDir.absolutePath)
 			}
@@ -93,9 +95,9 @@ class BackendTestsPlugin : Plugin<Project> {
 
 			"testImplementation"("ch.qos.logback:logback-classic")
 
-			"testImplementation"("io.kotest:kotest-runner-junit5-jvm")
-			"testImplementation"("io.kotest:kotest-extensions-spring-jvm")
-			"testImplementation"("io.kotest:kotest-assertions-json-jvm")
+			"testImplementation"("io.kotest:kotest-runner-junit5")
+			"testImplementation"("io.kotest:kotest-extensions-spring")
+			"testImplementation"("io.kotest:kotest-assertions-json")
 			"testImplementation"("com.github.javafaker:javafaker")
 
 			"testImplementation"("org.springframework.boot:spring-boot-starter-test") {

@@ -15,10 +15,6 @@ allprojects {
 
 gradlePlugin {
 	plugins {
-		register("backend-plugin") {
-			id = "ru.itbasis.backend-plugin"
-			implementationClass = "ru.itbasis.gradle.BackendPlugin"
-		}
 		register("ru.itbasis.root-module") {
 			id = "ru.itbasis.root-module"
 			implementationClass = "ru.itbasis.gradle.rootmodule.RootModulePlugin"

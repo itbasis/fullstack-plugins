@@ -11,6 +11,7 @@ configure<PublishingExtension> {
 	publications {
 		maybeCreate("pluginMaven", MavenPublication::class).apply {
 			pom {
+				packaging = "pom"
 				artifactId = project.name + "-all-plugins"
 			}
 		}
@@ -40,4 +41,5 @@ subprojects {
 	configure<PluginBundleExtension> {
 		tags = listOf("ru.itbasis", "kotlin", "spring", "springframework", "spring-boot")
 	}
+
 }

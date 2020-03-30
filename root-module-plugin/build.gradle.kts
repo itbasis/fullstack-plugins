@@ -1,3 +1,5 @@
+import com.gradle.publish.PluginBundleExtension
+
 plugins {
 	`kotlin-dsl`
 	`maven-publish`
@@ -5,11 +7,15 @@ plugins {
 	id("com.gradle.plugin-publish")
 }
 
-pluginBundle {
+kotlinDslPluginOptions {
+	experimentalWarning.set(false)
+}
+
+configure<PluginBundleExtension> {
 	tags = listOf("ru.itbasis", "kotlin", "intellij", "idea", "settings")
 }
 
-gradlePlugin {
+configure<GradlePluginDevelopmentExtension> {
 	plugins {
 		register("plugin") {
 			id = "ru.itbasis.root-module"

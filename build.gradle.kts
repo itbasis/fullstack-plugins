@@ -1,6 +1,9 @@
 import com.gradle.publish.PublishPlugin
 import com.jfrog.bintray.gradle.BintrayExtension
 import com.jfrog.bintray.gradle.BintrayPlugin
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
 import ru.itbasis.gradle.common.ide.idea.gradleRunConfiguration
 
 plugins {
@@ -45,6 +48,34 @@ subprojects {
 				pkg.apply {
 					repo = group as String
 					name = this@subprojects.name
+				}
+			}
+		}
+	}
+
+	tasks {
+		withType(Test::class) {
+			useJUnitPlatform()
+			testLogging {
+				showExceptions = true
+				showStandardStreams = true
+				events = setOf(FAILED, PASSED)
+				exceptionFormat = FULL
+			}
+		}
+	}
+
+	dependencies {
+		"testImplementation"(gradleTestKit())
+		"testImplementation"("io.kotest:kotest-runner-junit5")
+	}
+
+	configurations.all {
+		resolutionStrategy {
+
+			eachDependency {
+				when (requested.group) {
+					"io.kotest" -> useVersion("4.0.1")
 				}
 			}
 		}
