@@ -17,8 +17,8 @@ configure<PluginBundleExtension> {
 
 configure<GradlePluginDevelopmentExtension> {
 	plugins {
-		register("plugin") {
-			id = "ru.itbasis.root-module"
+		register("ru.itbasis.gradle.root-module-plugin") {
+			id = "ru.itbasis.gradle.root-module-plugin"
 			implementationClass = "ru.itbasis.gradle.rootmodule.RootModulePlugin"
 		}
 	}
@@ -26,5 +26,6 @@ configure<GradlePluginDevelopmentExtension> {
 
 val gradleIdeaExtVersion = extra["gradle-idea-ext.version"] as String
 dependencies {
+	api(project(":common:common-core"))
 	api(project(":common:common-ide-idea"))
 }

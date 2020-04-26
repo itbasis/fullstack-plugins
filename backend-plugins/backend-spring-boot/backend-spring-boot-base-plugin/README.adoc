@@ -1,0 +1,33 @@
+== Plugin 'Spring Boot for backend (base)'
+
+1. Configures Spring support for the kotlin module
+2. Enables compilation of Spring Bean information in code at compilation
+3. Configures the Java version to compile
+4. Adds basic dependencies for a project
+5. Configures separate directories for unit and integration tests
+6. Adds dependencies for tests (JUnit 5, Kotest)
+7. Adds dependency versioning
+8. Prescribes basic versions that are not available in link:https://github.com/spring-projects/spring-boot/blob/2.2.x/spring-boot-project/spring-boot-dependencies/pom.xml[Spring Boot dependencies]
+9. Excludes dependencies on Tomcat
+
+=== Dependencies management
+
+|===
+|Dependency |key |default version
+
+|`io.github.microutils`
+|`microutils.version`
+|`1.+`
+
+|`io.kotest`
+|`kotest.version`
+|`4.+`
+
+|`com.github.javafaker`
+|`javafaker.version`
+|`1.+`
+
+|`com.soywiz.korlibs.klock`
+|`korlibs.klock.version`
+|`1.+`
+|===

@@ -9,7 +9,7 @@ class RootModulePluginTest : FunSpec(
 	{
 		test("using plugin") {
 			val project = ProjectBuilder.builder().build()
-			project.pluginManager.apply("ru.itbasis.root-module")
+			project.pluginManager.apply("ru.itbasis.gradle.root-module-plugin")
 
 			project.plugins.getPlugin(RootModulePlugin::class.java) shouldNotBe null
 			project.plugins.getPlugin(IdeaExtPlugin::class.java) shouldNotBe null

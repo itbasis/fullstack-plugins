@@ -15,8 +15,8 @@ allprojects {
 
 gradlePlugin {
 	plugins {
-		register("ru.itbasis.root-module") {
-			id = "ru.itbasis.root-module"
+		register("ru.itbasis.gradle.root-module-plugin") {
+			id = "ru.itbasis.gradle.root-module-plugin"
 			implementationClass = "ru.itbasis.gradle.rootmodule.RootModulePlugin"
 		}
 	}
@@ -35,6 +35,8 @@ configurations.all {
 	}
 }
 dependencies {
+	api(kotlin("gradle-plugin"))
+
 	api("gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:$gradleIdeaExtVersion")
 	api("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$gradleDetektVersion")
 

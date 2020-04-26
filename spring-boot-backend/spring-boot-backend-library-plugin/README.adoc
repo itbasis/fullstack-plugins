@@ -1,5 +1,0 @@
-== Plugin 'Spring Boot for backend (library)'
-
-Extends the plugin link:../spring-boot-backend-base-plugin[spring-boot-backend-base-plugin]
-
-1. Adds basic dependencies for the library module

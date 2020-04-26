@@ -15,7 +15,7 @@ repositories {
     maven(url = "https://dl.bintray.com/borzdeg/ru.itbasis.gradle")
 }
 dependencies {
-	api("ru.itbasis.gradle:spring-boot-backend-all-plugins:0.3.3")
+	api("ru.itbasis.gradle:backend-spring-boot-all-plugins:0.4")
 }
 ----
 
@@ -25,23 +25,18 @@ in modules (enable any of the plugins):
 ----
 plugins {
     // id("ru.itbasis.root-module") - only root module
+
     // id("ru.itbasis.spring-boot.backend-library-plugin")
-    // id("ru.itbasis.spring-boot.backend-library-db-plugin")
     // id("ru.itbasis.spring-boot.backend-service-plugin")
+
     // etc...
 }
 ----
 
 include::./root-module-plugin/README.adoc[]
 
-include::./spring-boot-backend/spring-boot-backend-base-plugin/README.adoc[]
+include::./backend/backend-spring-boot/backend-spring-boot-base-plugin/README.adoc[]
 
-include::./spring-boot-backend/spring-boot-backend-versions-plugin/README.adoc[]
+include::./backend/backend-spring-boot/backend-spring-boot-library-plugin/README.adoc[]
 
-include::./spring-boot-backend/spring-boot-backend-tests-plugin/README.adoc[]
-
-include::./spring-boot-backend/spring-boot-backend-library-plugin/README.adoc[]
-
-include::./spring-boot-backend/spring-boot-backend-library-db-plugin/README.adoc[]
-
-include::./spring-boot-backend/spring-boot-backend-service-plugin/README.adoc[]
+include::./backend/backend-spring-boot/backend-spring-boot-service-plugin/README.adoc[]

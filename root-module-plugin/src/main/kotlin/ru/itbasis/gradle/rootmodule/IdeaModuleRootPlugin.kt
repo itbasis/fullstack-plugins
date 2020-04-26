@@ -1,5 +1,3 @@
-@file:Suppress("ktNoinlineFunc")
-
 package ru.itbasis.gradle.rootmodule
 
 import org.gradle.api.Plugin
@@ -8,8 +6,12 @@ import org.gradle.api.plugins.ExtensionAware
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.plugins.ide.idea.model.IdeaModel
-import org.jetbrains.gradle.ext.*
+import org.jetbrains.gradle.ext.ActionDelegationConfig
+import org.jetbrains.gradle.ext.EncodingConfiguration
 import org.jetbrains.gradle.ext.EncodingConfiguration.BomPolicy.WITH_BOM_ON_WINDOWS
+import org.jetbrains.gradle.ext.IdeaCompilerConfiguration
+import org.jetbrains.gradle.ext.IdeaExtPlugin
+import org.jetbrains.gradle.ext.ProjectSettings
 
 class IdeaModuleRootPlugin : Plugin<Project> {
 	override fun apply(target: Project): Unit = target.run {
@@ -27,7 +29,15 @@ class IdeaModuleRootPlugin : Plugin<Project> {
 					this as ExtensionAware
 
 					doNotDetectFrameworks(
-						"AngularCLI", "django", "ejb", "Python", "google-appengine-python", "buildout-python", "gwt", "appengine-java", "javaeeApplication"
+						"AngularCLI",
+						"django",
+						"ejb",
+						"Python",
+						"google-appengine-python",
+						"buildout-python",
+						"gwt",
+						"appengine-java",
+						"javaeeApplication"
 					)
 
 					configure<EncodingConfiguration> {

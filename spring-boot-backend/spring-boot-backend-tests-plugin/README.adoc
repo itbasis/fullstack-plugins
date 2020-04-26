@@ -1,4 +1,0 @@
-== Plugin 'Spring Boot for backend (tests)'
-
-1. Configures separate directories for unit and integration tests
-2. Adds dependencies for tests (JUnit 5, Kotest)

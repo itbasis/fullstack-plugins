@@ -8,7 +8,7 @@ import ru.itbasis.gradle.common.ide.idea.gradleRunConfiguration
 
 plugins {
 	`maven-publish`
-	id("ru.itbasis.root-module")
+	id("ru.itbasis.gradle.root-module-plugin")
 }
 
 allprojects {
@@ -22,15 +22,16 @@ allprojects {
 		}
 	}
 }
+val kotestVersion = extra["kotest.version"] as String
 
 subprojects {
-	if (name == "common") {
-		return@subprojects
-	}
-
 	repositories {
 		gradlePluginPortal()
 		jcenter()
+	}
+
+	if (name == "common" || name == "backend-plugins") {
+		return@subprojects
 	}
 
 	apply<PublishPlugin>()
@@ -66,8 +67,10 @@ subprojects {
 	}
 
 	dependencies {
-		"testImplementation"(gradleTestKit())
-		"testImplementation"("io.kotest:kotest-runner-junit5")
+		"testImplementation"(project(":root-module-plugin"))
+		if (name != "common-tests") {
+			"testImplementation"(project(":common:common-tests"))
+		}
 	}
 
 	configurations.all {
@@ -75,15 +78,20 @@ subprojects {
 
 			eachDependency {
 				when (requested.group) {
-					"io.kotest" -> useVersion("4.0.1")
+					"io.kotest" -> useVersion(kotestVersion)
 				}
 			}
 		}
 	}
 }
 
-gradleRunConfiguration(cfgSubName = "publish (local)", tasks = listOf("check", "publishToMavenLocal"))
+gradleRunConfiguration(cfgSubName = "publish (local)", tasks = listOf("check", "publishToMavenLocal")) {
+	scriptParameters = "-x test"
+}
 gradleRunConfiguration(cfgSubName = "publish", tasks = listOf("check", "bintrayUpload"))
+gradleRunConfiguration(cfgSubName = "publish (without tests)", tasks = listOf("check", "bintrayUpload")) {
+	scriptParameters = "-x test"
+}
 gradleRunConfiguration(
 	cfgSubName = "resources",
 	tasks = listOf("processResources", "generatePomFileForPluginMavenPublication", "generateMetadataFileForPluginMavenPublication")
