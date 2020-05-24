@@ -25,6 +25,9 @@ test:
     policy: pull
     paths:
       - .gradle
+  artifacts:
+    reports:
+      junit: ./**/build/test-results/test/**/TEST-*.xml
 
 deploy:
   stage: deploy
