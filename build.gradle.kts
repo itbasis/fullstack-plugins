@@ -36,20 +36,20 @@ subprojects {
 
 	apply<PublishPlugin>()
 	apply<MavenPublishPlugin>()
+	if (hasBinTrayCredentials()) {
+		val bintrayUser = extra["bintray_user"] as String
+		val bintrayApiKey = extra["bintray_apikey"] as String
 
-	(extra["bintray_user"] as? String)?.let { bintrayUser ->
-		(extra["bintray_apikey"] as? String)?.let { bintrayApiKey ->
-			apply<BintrayPlugin>()
-			configure<BintrayExtension> {
-				user = bintrayUser
-				key = bintrayApiKey
-				override = true
-				publish = true
-				setPublications("pluginMaven")
-				pkg.apply {
-					repo = group as String
-					name = this@subprojects.name
-				}
+		apply<BintrayPlugin>()
+		configure<BintrayExtension> {
+			user = bintrayUser
+			key = bintrayApiKey
+			override = true
+			publish = true
+			setPublications("pluginMaven")
+			pkg.apply {
+				repo = group as String
+				name = this@subprojects.name
 			}
 		}
 	}

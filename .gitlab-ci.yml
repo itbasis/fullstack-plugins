@@ -20,7 +20,17 @@ build:
 
 test:
   stage: test
-  script: ./gradlew assemble check
+  script: ./gradlew check
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
+
+deploy:
+  stage: deploy
+  script: ./gradlew bintrayUpload
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull

@@ -18,9 +18,11 @@ configure<PublishingExtension> {
 	}
 }
 
-configure<BintrayExtension> {
-	pkg.apply {
-		name = project.name + "-all-plugins"
+if (hasBinTrayCredentials()) {
+	configure<BintrayExtension> {
+		pkg.apply {
+			name = project.name + "-all-plugins"
+		}
 	}
 }
 

@@ -1,4 +1,3 @@
-
 import com.jfrog.bintray.gradle.BintrayExtension
 import ru.itbasis.gradle.common.kotlin.CheckstylePlugin
 
@@ -25,9 +24,11 @@ subprojects {
 			}
 		}
 
-		configure<BintrayExtension> {
-			pkg.apply {
-				name = project.name + "-all-plugins"
+		if (hasBinTrayCredentials()) {
+			configure<BintrayExtension> {
+				pkg.apply {
+					name = project.name + "-all-plugins"
+				}
 			}
 		}
 
