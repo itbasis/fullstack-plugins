@@ -7,10 +7,8 @@ configure<GradlePluginDevelopmentExtension> {
 	}
 }
 
-val shadowVersion = extra["gradle-shadow.version"] as String
-
 dependencies {
 	api(project(":backend-plugins:backend-koin:backend-koin-library-plugin"))
 
-	api("com.github.jengelman.gradle.plugins:shadow:$shadowVersion")
+	testImplementation("ch.qos.logback:logback-classic")
 }

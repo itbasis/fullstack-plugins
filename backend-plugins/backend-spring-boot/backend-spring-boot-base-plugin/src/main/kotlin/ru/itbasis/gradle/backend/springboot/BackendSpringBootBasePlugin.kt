@@ -19,13 +19,13 @@ import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin
 import org.springframework.boot.gradle.dsl.SpringBootExtension
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import org.springframework.boot.gradle.plugin.SpringBootPlugin.BOOT_JAR_TASK_NAME
+import ru.itbasis.gradle.INTEGRATION_TEST_TASK_NAME
 import ru.itbasis.gradle.backend.BackendBasePlugin
+import ru.itbasis.gradle.backend.springboot.actions.BackendSpringBootVersionsAction
 
 class BackendSpringBootBasePlugin : Plugin<Project> {
 	override fun apply(target: Project): Unit = target.run {
 		apply<BackendBasePlugin>()
-
-		apply<BackendSpringBootVersionsPlugin>()
 
 		apply<SpringBootPlugin>()
 
@@ -39,6 +39,10 @@ class BackendSpringBootBasePlugin : Plugin<Project> {
 
 		configureTasks(target = target)
 		configureDependencies(target = target)
+
+		listOf(BackendSpringBootVersionsAction()).forEach {
+			it.execute(target)
+		}
 	}
 
 	private fun configureTasks(target: Project): Unit = target.run {
@@ -55,7 +59,7 @@ class BackendSpringBootBasePlugin : Plugin<Project> {
 				environment("SPRING_PROFILES_ACTIVE", "test")
 			}
 
-			named(BackendBasePlugin.INTEGRATION_TEST_TASK_NAME, Test::class) {
+			named(INTEGRATION_TEST_TASK_NAME, Test::class) {
 				environment("SPRING_PROFILES_ACTIVE", "itest")
 			}
 		}

@@ -18,5 +18,5 @@ configure<GradlePluginDevelopmentExtension> {
 dependencies {
 	api(project(":backend-plugins:backend-koin:backend-koin-base-plugin"))
 
-	api("org.openapitools:openapi-generator-gradle-plugin:+")
+	api("org.openapitools:openapi-generator-gradle-plugin:4.3.1")
 }

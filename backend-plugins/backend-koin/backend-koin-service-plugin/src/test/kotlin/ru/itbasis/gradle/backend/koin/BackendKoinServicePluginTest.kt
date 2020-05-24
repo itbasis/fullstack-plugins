@@ -36,5 +36,13 @@ class BackendKoinServicePluginTest : FunSpec(
 			} should singleElement("0.7.1")
 		}
 
+		test("fatJar") {
+			val project = initTestProject()
+			project.pluginManager.apply("ru.itbasis.gradle.backend-koin-service-plugin")
+
+			val fatJar = project.tasks.findByName("fatJar")
+
+			fatJar shouldNotBe null
+		}
 	}
 )

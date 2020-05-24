@@ -1,6 +1,7 @@
 package ru.itbasis.gradle.backend.koin
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.singleElement
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldNotBe
@@ -22,6 +23,10 @@ class BackendKoinBasePluginTest : FunSpec(
 			}.map {
 				it.version
 			}.toSet() should singleElement("2.1.5")
+
+			project.getAllDependencies(filterPrefix = "itest").map {
+				"${it.group}:${it.module}"
+			} shouldContain "org.koin:koin-test"
 		}
 	}
 )

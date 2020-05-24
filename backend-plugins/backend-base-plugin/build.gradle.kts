@@ -13,8 +13,6 @@ dependencies {
 	api(project(":common:common-kotlin"))
 	api(project(":common:common-ide-idea"))
 
-	api("org.springframework.boot:spring-boot-gradle-plugin:2.2.6.RELEASE")
-
-	//	api("io.kotlintest:kotlintest-gradle-plugin:+")
-
+	api("org.springframework.boot:spring-boot-gradle-plugin:2.3.0.RELEASE")
+	api("io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE")
 }

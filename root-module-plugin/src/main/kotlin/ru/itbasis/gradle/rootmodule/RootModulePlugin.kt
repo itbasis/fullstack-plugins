@@ -24,7 +24,7 @@ class RootModulePlugin : Plugin<Project> {
 		gradleRunConfiguration(cfgSubName = "assemble", tasks = listOf("clean", "assemble"))
 		gradleRunConfiguration(cfgSubName = "all tests", tasks = listOf("assemble", "check"))
 		gradleRunConfiguration(cfgSubName = "checkstyle", tasks = listOf("checkstyle"))
-		gradleRunConfiguration(cfgSubName = "wrapper, refresh dependencies", tasks = listOf("clean", "wrapper")) {
+		gradleRunConfiguration(cfgSubName = "wrapper, refresh dependencies", tasks = listOf("clean", "wrapper", "processResources")) {
 			scriptParameters = "--refresh-dependencies"
 		}
 		gradleRunConfiguration(cfgSubName = "resources", tasks = listOf("processResources")) {

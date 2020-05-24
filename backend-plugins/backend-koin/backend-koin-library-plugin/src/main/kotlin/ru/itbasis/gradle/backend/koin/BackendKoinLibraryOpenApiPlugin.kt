@@ -33,7 +33,9 @@ class BackendKoinLibraryOpenApiPlugin : Plugin<Project> {
 			val generateOpenApiKotlin by creating(GenerateTask::class) {
 				group = "openapi"
 
-				generatorName.set("kotlin-server")
+				generatorName.set("kotlin")
+
+				validateSpec.set(true)
 
 				inputSpec.set("$openApiSpecDir/root.json")
 				outputDir.set("$buildDir/generated-sources/kotlin")
@@ -43,9 +45,10 @@ class BackendKoinLibraryOpenApiPlugin : Plugin<Project> {
 				configOptions.set(
 					mapOf(
 						"enumPropertyNaming" to "UPPERCASE",
-						"dateLibrary" to "java8",
+						"dateLibrary" to "java8-localdatetime",
 						"collectionType" to "list",
 						"serializationLibrary" to "jackson",
+						"library" to "multiplatform",
 						"sourceFolder" to ""
 					)
 				)

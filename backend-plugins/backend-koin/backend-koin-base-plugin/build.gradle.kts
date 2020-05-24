@@ -8,5 +8,7 @@ configure<GradlePluginDevelopmentExtension> {
 }
 
 dependencies {
+	api(kotlin("serialization"))
+
 	api(project(":backend-plugins:backend-base-plugin"))
 }
