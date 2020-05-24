@@ -33,3 +33,8 @@ ij_editorconfig_spaces_around_assignment_operators = true
 tab_width                   = 2
 indent_style                = space
 ij_xml_space_after_tag_name = true
+
+
+[*.yml]
+tab_width    = 2
+indent_style = space
