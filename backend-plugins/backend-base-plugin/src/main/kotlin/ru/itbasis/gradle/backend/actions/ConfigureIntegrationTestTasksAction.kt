@@ -17,6 +17,7 @@ import org.gradle.kotlin.dsl.withType
 import org.gradle.language.base.plugins.LifecycleBasePlugin
 import org.gradle.language.base.plugins.LifecycleBasePlugin.CHECK_TASK_NAME
 import ru.itbasis.gradle.INTEGRATION_TEST_TASK_NAME
+import kotlin.math.max
 
 class ConfigureIntegrationTestTasksAction : Action<Project> {
 	override fun execute(project: Project): Unit = project.run {
@@ -40,7 +41,7 @@ class ConfigureIntegrationTestTasksAction : Action<Project> {
 
 			withType(Test::class) {
 				useJUnitPlatform()
-				maxParallelForks = Runtime.getRuntime().availableProcessors() / 2
+				maxParallelForks = max(1, Runtime.getRuntime().availableProcessors() / 2)
 
 				testLogging {
 					showStandardStreams = true
