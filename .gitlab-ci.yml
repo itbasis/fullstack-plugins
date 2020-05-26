@@ -1,8 +1,5 @@
 image: bellsoft/liberica-openjdk-alpine-musl:14.0.1
 
-include:
-  - template: Dependency-Scanning.gitlab-ci.yml
-
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
@@ -19,10 +16,6 @@ build:
     policy: push
     paths:
       - .gradle
-
-gemnasium-dependency_scanning:
-  stage: test
-  allow_failure: true
 
 test:
   stage: test
