@@ -24,6 +24,7 @@ gradlePlugin {
 
 val gradleDetektVersion = extra["gradle-detekt.version"] as String
 val gradleIdeaExtVersion = extra["gradle-idea-ext.version"] as String
+val gradleGemnasiumVersion = extra["gradle-gemnasium.version"] as String
 
 configurations.all {
 	resolutionStrategy {
@@ -42,4 +43,6 @@ dependencies {
 
 	api("com.gradle.publish:plugin-publish-plugin:+")
 	api("com.jfrog.bintray.gradle:gradle-bintray-plugin:+")
+
+	api("com.gemnasium:gradle-plugin:$gradleGemnasiumVersion")
 }

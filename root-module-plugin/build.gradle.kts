@@ -24,8 +24,10 @@ configure<GradlePluginDevelopmentExtension> {
 	}
 }
 
-val gradleIdeaExtVersion = extra["gradle-idea-ext.version"] as String
+val gradleGemnasiumVersion = extra["gradle-gemnasium.version"] as String
 dependencies {
+	api("com.gemnasium:gradle-plugin:$gradleGemnasiumVersion")
+
 	api(project(":common:common-core"))
 	api(project(":common:common-ide-idea"))
 }

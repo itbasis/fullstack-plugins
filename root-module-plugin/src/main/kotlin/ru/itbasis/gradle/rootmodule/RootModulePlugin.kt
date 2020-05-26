@@ -1,5 +1,6 @@
 package ru.itbasis.gradle.rootmodule
 
+import com.gemnasium.GemnasiumGradlePlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.wrapper.Wrapper
@@ -18,6 +19,10 @@ class RootModulePlugin : Plugin<Project> {
 
 		tasks.withType(Wrapper::class) {
 			distributionType = Wrapper.DistributionType.ALL
+		}
+
+		allprojects {
+			apply<GemnasiumGradlePlugin>()
 		}
 
 		gradleRunConfiguration(tasks = listOf("clean"))

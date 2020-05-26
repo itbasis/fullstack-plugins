@@ -20,6 +20,19 @@ build:
     paths:
       - .gradle
 
+security_scan:
+  stage: test
+  script: ./gradlew gemnasiumDumpDependencies
+  allow_failure: true
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - .gradle
+  artifacts:
+    reports:
+      dependency_scanning: ./**/reports/gradle-dependencies.json
+
 test:
   stage: test
   script: ./gradlew check
@@ -34,6 +47,8 @@ test:
 
 deploy:
   stage: deploy
+  only:
+    - master
   script: ./gradlew bintrayUpload
   cache:
     key: "$CI_COMMIT_REF_NAME"

@@ -30,7 +30,7 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 			"kotest.version" to "4.0.5",
 			"korlibs.klock.version" to "1.9.1",
 			"liquibase.version" to "3.9.0",
-			"jetbrains.exposed.version" to "0.24.1",
+			"jetbrains.exposed.version" to "0.25.1",
 			"ktor.version" to "1.3.2",
 			"koin.version" to "2.1.5",
 			"kotlinx-html.version" to "0.7.1",
