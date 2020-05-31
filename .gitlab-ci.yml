@@ -10,18 +10,20 @@ cache:
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
-liberica-14:
+assembly:
   stage: assembly
   image: bellsoft/liberica-openjdk-alpine-musl:14
   before_script:
     - java -version
     - ./gradlew -version
   script: ./gradlew --build-cache assemble
+  only:
+    - master
   artifacts:
     paths:
       - .gradle/
       - build/
-    expire_in: 60 min
+    expire_in: 1 week
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -70,6 +72,8 @@ release:
   image: bellsoft/liberica-openjdk-alpine-musl:14
   only:
     - master
+  dependencies:
+    - assembly
   script: ./gradlew bintrayUpload
   cache:
     key: "$CI_COMMIT_REF_NAME"
