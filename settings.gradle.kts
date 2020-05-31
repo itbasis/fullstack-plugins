@@ -32,13 +32,6 @@ include(
 	":backend-plugins:backend-koin:backend-koin-service-plugin"
 )
 
-include(
-	"backend-plugins:backend-spring-boot",
-	"backend-plugins:backend-spring-boot:backend-spring-boot-base-plugin",
-	"backend-plugins:backend-spring-boot:backend-spring-boot-library-plugin",
-	"backend-plugins:backend-spring-boot:backend-spring-boot-service-plugin"
-)
-
 includeSubmodules("flutter-plugins")
 
 include("root-module-plugin")

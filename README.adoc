@@ -1,45 +1,8 @@
 = Gradle Fullstack plugins
 
-image:https://img.shields.io/github/v/tag/borzdeg/itbasis-fullstack-plugins?label=Stable[GitHub tag (latest SemVer pre-release)]
-image:https://img.shields.io/github/v/tag/borzdeg/itbasis-fullstack-plugins?include_prereleases&label=Latest[GitHub tag (latest SemVer pre-release)]
-
 image:https://img.shields.io/badge/JVM-14+-green.svg[]
 
 image:https://gitlab.com/victor.alenkov/itbasis-fullstack-plugins/badges/master/pipeline.svg[link="https://gitlab.com/victor.alenkov/itbasis-fullstack-plugins/-/commits/master",title="pipeline status"]
 image:https://gitlab.com/victor.alenkov/itbasis-fullstack-plugins/badges/master/coverage.svg[link="https://gitlab.com/victor.alenkov/itbasis-fullstack-plugins/-/commits/master",title="coverage report"]
 
-== use gradle
-
-`buildSrc/build.gradle.kts`:
-
-[source,gradle]
-----
-repositories {
-    maven(url = "https://dl.bintray.com/borzdeg/ru.itbasis.gradle")
-}
-dependencies {
-	api("ru.itbasis.gradle:backend-spring-boot-all-plugins:0.4")
-}
-----
-
-in modules (enable any of the plugins):
-
-[source,gradle]
-----
-plugins {
-    // id("ru.itbasis.root-module") - only root module
-
-    // id("ru.itbasis.spring-boot.backend-library-plugin")
-    // id("ru.itbasis.spring-boot.backend-service-plugin")
-
-    // etc...
-}
-----
-
 include::./root-module-plugin/README.adoc[]
-
-include::./backend/backend-spring-boot/backend-spring-boot-base-plugin/README.adoc[]
-
-include::./backend/backend-spring-boot/backend-spring-boot-library-plugin/README.adoc[]
-
-include::./backend/backend-spring-boot/backend-spring-boot-service-plugin/README.adoc[]

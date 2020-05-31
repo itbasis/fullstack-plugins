@@ -9,6 +9,4 @@ configure<GradlePluginDevelopmentExtension> {
 
 dependencies {
 	api(project(":backend-plugins:backend-koin:backend-koin-library-plugin"))
-
-	testImplementation("ch.qos.logback:logback-classic")
 }

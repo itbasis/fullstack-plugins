@@ -10,6 +10,7 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.getPlugin
 import org.gradle.kotlin.dsl.kotlin
+import org.gradle.kotlin.dsl.maven
 import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.the
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
@@ -21,13 +22,14 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 
 		repositories {
 			jcenter()
+			maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 		}
 
 		mapOf(
 			"kotlin.version" to project.plugins.getPlugin(KotlinPluginWrapper::class).kotlinPluginVersion,
 			"microutils.version" to "1.7.9",
 			"javafaker.version" to "1.0.2",
-			"kotest.version" to "4.0.5",
+			"kotest.version" to "4.1.+",
 			"korlibs.klock.version" to "1.9.1",
 			"liquibase.version" to "3.9.0",
 			"jetbrains.exposed.version" to "0.25.1",

@@ -2,10 +2,6 @@ plugins {
 	`kotlin-dsl`
 }
 
-configure<KotlinDslPluginOptions> {
-	experimentalWarning.set(false)
-}
-
 configure<GradlePluginDevelopmentExtension> {
 	plugins {
 		register("backend-common-plugin") {
@@ -23,4 +19,6 @@ dependencies {
 	api(project(":common:common-core"))
 
 	api("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$gradleDetektVersion")
+
+	testImplementation(project(":common:common-tests"))
 }

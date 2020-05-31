@@ -10,6 +10,7 @@ allprojects {
 	repositories {
 		gradlePluginPortal()
 		jcenter()
+		maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 	}
 }
 

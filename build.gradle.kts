@@ -28,6 +28,7 @@ subprojects {
 	repositories {
 		gradlePluginPortal()
 		jcenter()
+		maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 	}
 
 	if (name == "common" || name == "backend-plugins") {
