@@ -10,12 +10,13 @@ cache:
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
+before_script:
+  - java -version
+  - ./gradlew -version
+
 assembly:
   stage: assembly
   image: bellsoft/liberica-openjdk-alpine-musl:14
-  before_script:
-    - java -version
-    - ./gradlew -version
   script: ./gradlew --build-cache assemble
   only:
     - master
