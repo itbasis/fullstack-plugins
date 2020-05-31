@@ -1,24 +1,36 @@
-image: bellsoft/liberica-openjdk-alpine-musl:14.0.1
+stages:
+  - assembly
+  - test
+  - release
+
+cache:
+  paths:
+    - $HOME/.gradle
 
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
-before_script:
-  - export GRADLE_USER_HOME=`pwd`/.gradle
-  - java -version
-  - ./gradlew -version
-
-build:
-  stage: build
+liberica-14:
+  stage: assembly
+  image: bellsoft/liberica-openjdk-alpine-musl:14
+  before_script:
+    - java -version
+    - ./gradlew -version
   script: ./gradlew --build-cache assemble
+  artifacts:
+    paths:
+      - .gradle/
+      - build/
+    expire_in: 60 min
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
     paths:
       - .gradle
 
-test:
+test:liberica-14:
   stage: test
+  image: bellsoft/liberica-openjdk-alpine-musl:14
   script: ./gradlew check
   cache:
     key: "$CI_COMMIT_REF_NAME"
@@ -29,8 +41,33 @@ test:
     reports:
       junit: ./**/build/test-results/test/**/TEST-*.xml
 
-deploy:
-  stage: deploy
+test:adoptopenjdk-14:
+  stage: test
+  image: adoptopenjdk/openjdk14:alpine-slim
+  script: ./gradlew check
+  artifacts:
+    reports:
+      junit: ./**/build/test-results/test/**/TEST-*.xml
+
+test:openjdk-14:
+  stage: test
+  image: openjdk:14-alpine
+  script: ./gradlew check
+  artifacts:
+    reports:
+      junit: ./**/build/test-results/test/**/TEST-*.xml
+
+test:openjdk-15:
+  stage: test
+  image: openjdk:15-alpine
+  script: ./gradlew check
+  artifacts:
+    reports:
+      junit: ./**/build/test-results/test/**/TEST-*.xml
+
+release:
+  stage: release
+  image: bellsoft/liberica-openjdk-alpine-musl:14
   only:
     - master
   script: ./gradlew bintrayUpload

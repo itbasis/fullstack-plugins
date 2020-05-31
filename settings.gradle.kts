@@ -1,6 +1,19 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.gradle.api.internal.FeaturePreviews.Feature.GRADLE_METADATA
 
 rootProject.name = "itbasis-fullstack-plugins"
+
+plugins {
+	`gradle-enterprise`
+}
+
+gradleEnterprise {
+	buildScan {
+		termsOfServiceUrl = "https://gradle.com/terms-of-service"
+		termsOfServiceAgree = "yes"
+	}
+}
 
 enableFeaturePreview(GRADLE_METADATA.name)
 
