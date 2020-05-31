@@ -34,7 +34,7 @@ assembly:
 test:liberica-14:
   stage: test
   image: bellsoft/liberica-openjdk-alpine-musl:14
-  script: ./gradlew check
+  script: ./gradlew check --scan
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
@@ -47,7 +47,7 @@ test:liberica-14:
 test:adoptopenjdk-14:
   stage: test
   image: adoptopenjdk/openjdk14:alpine-slim
-  script: ./gradlew check
+  script: ./gradlew check --scan
   artifacts:
     reports:
       junit: ./**/build/test-results/test/**/TEST-*.xml
@@ -55,7 +55,7 @@ test:adoptopenjdk-14:
 test:openjdk-14:
   stage: test
   image: openjdk:14-alpine
-  script: ./gradlew check
+  script: ./gradlew check --scan
   artifacts:
     reports:
       junit: ./**/build/test-results/test/**/TEST-*.xml
@@ -63,7 +63,7 @@ test:openjdk-14:
 test:openjdk-15:
   stage: test
   image: openjdk:15-alpine
-  script: ./gradlew check
+  script: ./gradlew check --scan
   artifacts:
     reports:
       junit: ./**/build/test-results/test/**/TEST-*.xml

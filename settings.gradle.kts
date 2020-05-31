@@ -1,7 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.gradle.api.internal.FeaturePreviews.Feature.GRADLE_METADATA
-
 rootProject.name = "itbasis-fullstack-plugins"
 
 plugins {
@@ -14,8 +12,6 @@ gradleEnterprise {
 		termsOfServiceAgree = "yes"
 	}
 }
-
-enableFeaturePreview(GRADLE_METADATA.name)
 
 fun includeSubmodules(modulesRootDirName: String) {
 	val modulesRootDir = rootDir.resolve(modulesRootDirName.replace(":", File.separator))
