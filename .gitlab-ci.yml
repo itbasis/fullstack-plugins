@@ -60,13 +60,13 @@ test:openjdk-14:
     reports:
       junit: ./**/build/test-results/test/**/TEST-*.xml
 
-#test:openjdk-15:
-#  stage: test
-#  image: openjdk:15-alpine
-#  script: ./gradlew check --scan
-#  artifacts:
-#    reports:
-#      junit: ./**/build/test-results/test/**/TEST-*.xml
+test:openjdk-15:
+  stage: test
+  image: openjdk:15-alpine
+  script: ./gradlew check --scan
+  artifacts:
+    reports:
+      junit: ./**/build/test-results/test/**/TEST-*.xml
 
 release:
   stage: release
