@@ -15,8 +15,10 @@ configure<GradlePluginDevelopmentExtension> {
 	}
 }
 
+val openapiGeneratorVersion = extra["openapi-generator.version"] as String
+
 dependencies {
 	api(project(":backend-plugins:backend-koin:backend-koin-base-plugin"))
 
-	api("org.openapitools:openapi-generator-gradle-plugin:4.3.1")
+	api("org.openapitools:openapi-generator-gradle-plugin:$openapiGeneratorVersion")
 }

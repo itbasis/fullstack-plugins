@@ -8,40 +8,27 @@ import org.gradle.api.artifacts.DependencyResolveDetails
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.extra
-import org.gradle.kotlin.dsl.getPlugin
 import org.gradle.kotlin.dsl.kotlin
 import org.gradle.kotlin.dsl.maven
 import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.the
-import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
+import ru.itbasis.gradle.backend.utils.getAllPropertiesFromResources
+import ru.itbasis.gradle.backend.utils.putExtraKeys
 
 class ConfigureBaseDependenciesAction : Action<Project> {
-	override fun execute(project: Project): Unit = project.run {
+	override fun execute(target: Project): Unit = target.run {
 		apply<DependencyManagementPlugin>()
 
 		repositories {
 			jcenter()
+			mavenCentral()
+			maven(url = "https://kotlin.bintray.com/kotlinx")
 			maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
+			maven(url = "https://repo.spring.io/milestone")
 		}
 
-		mapOf(
-			"kotlin.version" to project.plugins.getPlugin(KotlinPluginWrapper::class).kotlinPluginVersion,
-			"microutils.version" to "1.7.9",
-			"javafaker.version" to "1.0.2",
-			"kotest.version" to "4.1.+",
-			"korlibs.klock.version" to "1.9.1",
-			"liquibase.version" to "3.9.0",
-			"jetbrains.exposed.version" to "0.25.1",
-			"ktor.version" to "1.3.2",
-			"koin.version" to "2.1.5",
-			"kotlinx-html.version" to "0.7.1",
-			"webjars-swagger.version" to "3.25.1"
-		).filterKeys {
-			!extra.has(it)
-		}.forEach { (k, v) ->
-			extra[k] = v
-		}
+		putExtraKeys(this@ConfigureBaseDependenciesAction.getAllPropertiesFromResources(propFileName = "versions.properties"))
 
 		the<DependencyManagementExtension>().apply {
 			imports {
@@ -62,14 +49,21 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 						"io.kotest"                -> useExtraVersion("kotest")
 						"com.github.javafaker"     -> useExtraVersion("javafaker")
 						"com.soywiz.korlibs.klock" -> useExtraVersion("korlibs.klock")
+						"commons-codec"            -> useExtraVersion("commons-codec")
 						"io.ktor"                  -> useExtraVersion("ktor")
 						"org.koin"                 -> useExtraVersion("koin")
-						"org.jetbrains.exposed"    -> useExtraVersion("jetbrains.exposed")
+						"org.jetbrains.kotlin"     -> useExtraVersion("kotlin")
+						"org.jetbrains.exposed"    -> useExtraVersion("exposed")
 						"org.jetbrains.kotlinx"    -> when {
-							requested.name.startsWith("kotlinx-html") -> useExtraVersion("kotlinx-html")
+							requested.name.startsWith("kotlinx-serialization") -> useExtraVersion("kotlinx-serialization")
+							requested.name.startsWith("kotlinx-html")          -> useExtraVersion("kotlinx-html")
 						}
 						"org.webjars"              -> when (requested.name) {
 							"swagger-ui" -> useExtraVersion("webjars-swagger")
+						}
+						"com.amazonaws.serverless" -> useExtraVersion("aws-serverless")
+						"com.amazonaws"            -> when {
+							requested.name.startsWith("aws-java-sdk-") -> useExtraVersion("aws-java-sdk")
 						}
 					}
 				}

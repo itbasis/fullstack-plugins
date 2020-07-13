@@ -3,7 +3,6 @@
 package ru.itbasis.gradle.backend.koin
 
 import io.gitlab.arturbosch.detekt.Detekt
-import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.kotlin.dsl.apply
@@ -14,8 +13,9 @@ import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.withType
 import org.openapitools.generator.gradle.plugin.OpenApiGeneratorPlugin
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
+import ru.itbasis.gradle.backend.AbstractPlugin
 
-class BackendKoinLibraryOpenApiPlugin : Plugin<Project> {
+class BackendKoinLibraryOpenApiPlugin : AbstractPlugin() {
 	override fun apply(target: Project): Unit = target.run {
 		apply<BackendKoinLibraryPlugin>()
 		apply<OpenApiGeneratorPlugin>()

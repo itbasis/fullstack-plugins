@@ -20,9 +20,10 @@ import ru.itbasis.gradle.INTEGRATION_TEST_TASK_NAME
 import kotlin.math.max
 
 class ConfigureIntegrationTestTasksAction : Action<Project> {
-	override fun execute(project: Project): Unit = project.run {
+	override fun execute(target: Project): Unit = target.run {
 		val itestSourceSet = the<SourceSetContainer>().getAt("itest")
 
+		// TODO https://github.com/unbroken-dome/gradle-testsets-plugin
 		tasks {
 			val test by named(JavaPlugin.TEST_TASK_NAME, Test::class)
 

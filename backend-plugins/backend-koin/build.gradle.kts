@@ -8,5 +8,4 @@ subprojects {
 	configure<PluginBundleExtension> {
 		tags = listOf("ru.itbasis", "kotlin", "koin", "ktor")
 	}
-
 }

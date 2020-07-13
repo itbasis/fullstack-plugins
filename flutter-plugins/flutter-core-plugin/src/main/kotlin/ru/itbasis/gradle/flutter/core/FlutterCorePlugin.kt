@@ -7,6 +7,7 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.Delete
 import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.register
+import org.gradle.language.base.plugins.LifecycleBasePlugin
 import org.gradle.language.base.plugins.LifecycleBasePlugin.BUILD_GROUP
 import org.gradle.language.base.plugins.LifecycleBasePlugin.CLEAN_TASK_NAME
 
@@ -19,10 +20,18 @@ class FlutterCorePlugin : Plugin<Project> {
 					buildDir.deleteRecursively()
 				}
 			}
+
+			val processResources = create(PROCESS_RESOURCES_TASK_NAME)
+
+			maybeCreate(LifecycleBasePlugin.BUILD_TASK_NAME).apply {
+				group = BUILD_GROUP
+				dependsOn(processResources)
+			}
 		}
 	}
 
 	companion object {
 		const val FLUTTER_GROUP = "flutter"
+		const val PROCESS_RESOURCES_TASK_NAME = "processResources"
 	}
 }

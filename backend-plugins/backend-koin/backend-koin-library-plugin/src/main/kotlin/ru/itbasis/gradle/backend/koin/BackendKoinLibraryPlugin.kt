@@ -1,11 +1,11 @@
 package ru.itbasis.gradle.backend.koin
 
-import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
+import ru.itbasis.gradle.backend.AbstractPlugin
 
-class BackendKoinLibraryPlugin : Plugin<Project> {
+class BackendKoinLibraryPlugin : AbstractPlugin() {
 	override fun apply(target: Project): Unit = target.run {
 		apply<BackendKoinBasePlugin>()
 

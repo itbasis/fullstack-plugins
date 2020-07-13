@@ -5,6 +5,8 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.wrapper.Wrapper
 import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.maven
+import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.withType
 import ru.itbasis.gradle.common.ide.idea.gradleRunConfiguration
 
@@ -23,6 +25,13 @@ class RootModulePlugin : Plugin<Project> {
 
 		allprojects {
 			apply<GemnasiumGradlePlugin>()
+
+			repositories {
+				jcenter()
+				maven(url = "http://dl.bintray.com/kotlin/kotlin-eap")
+				maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
+				maven(url = "https://repo.spring.io/milestone")
+			}
 		}
 
 		gradleRunConfiguration(tasks = listOf("clean"))

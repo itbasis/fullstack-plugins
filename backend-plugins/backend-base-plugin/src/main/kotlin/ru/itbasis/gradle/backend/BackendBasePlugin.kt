@@ -2,7 +2,6 @@
 
 package ru.itbasis.gradle.backend
 
-import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.plugins.ide.idea.IdeaPlugin
@@ -13,7 +12,7 @@ import ru.itbasis.gradle.backend.actions.ConfigureIntegrationTestTasksAction
 import ru.itbasis.gradle.backend.actions.ConfigureSourceSetAction
 import ru.itbasis.gradle.common.kotlin.CheckstylePlugin
 
-class BackendBasePlugin : Plugin<Project> {
+class BackendBasePlugin : AbstractPlugin() {
 	override fun apply(target: Project): Unit = target.run {
 		apply<KotlinPluginWrapper>()
 		apply<IdeaPlugin>()

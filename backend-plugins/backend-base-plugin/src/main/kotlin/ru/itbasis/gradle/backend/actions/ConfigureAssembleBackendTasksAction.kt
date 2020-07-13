@@ -9,7 +9,7 @@ import ru.itbasis.gradle.ASSEMBLE_BACKEND_TASK_NAME
 import ru.itbasis.gradle.common.ide.idea.gradleRunConfiguration
 
 class ConfigureAssembleBackendTasksAction : Action<Project> {
-	override fun execute(project: Project): Unit = project.run {
+	override fun execute(target: Project): Unit = target.run {
 		tasks {
 			maybeCreate(ASSEMBLE_BACKEND_TASK_NAME).apply {
 				group = BUILD_GROUP

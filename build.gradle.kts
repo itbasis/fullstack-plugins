@@ -25,10 +25,9 @@ allprojects {
 val kotestVersion = extra["kotest.version"] as String
 
 subprojects {
+
 	repositories {
 		gradlePluginPortal()
-		jcenter()
-		maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 	}
 
 	if (name == "common" || name == "backend-plugins") {
@@ -87,7 +86,7 @@ subprojects {
 }
 
 gradleRunConfiguration(cfgSubName = "publish (local)", tasks = listOf("check", "publishToMavenLocal")) {
-	scriptParameters = "-x test"
+	scriptParameters = "-x test --rerun-tasks"
 }
 gradleRunConfiguration(cfgSubName = "publish", tasks = listOf("check", "bintrayUpload"))
 gradleRunConfiguration(cfgSubName = "publish (without tests)", tasks = listOf("check", "bintrayUpload")) {

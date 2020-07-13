@@ -1,6 +1,5 @@
 package ru.itbasis.gradle.backend.koin
 
-import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ProjectDependency
 import org.gradle.api.file.DuplicatesStrategy
@@ -18,9 +17,11 @@ import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.registering
 import org.gradle.language.base.plugins.LifecycleBasePlugin.ASSEMBLE_TASK_NAME
+import org.gradle.language.base.plugins.LifecycleBasePlugin.BUILD_GROUP
+import ru.itbasis.gradle.backend.AbstractPlugin
 import ru.itbasis.gradle.common.ide.idea.gradleRunConfiguration
 
-class BackendKoinServicePlugin : Plugin<Project> {
+class BackendKoinServicePlugin : AbstractPlugin() {
 	override fun apply(target: Project): Unit = target.run {
 		apply<BackendKoinBasePlugin>()
 		apply<ApplicationPlugin>()
@@ -38,6 +39,8 @@ class BackendKoinServicePlugin : Plugin<Project> {
 
 		tasks {
 			val fatJar by registering(Jar::class) {
+				group = BUILD_GROUP
+
 				archiveBaseName.set("service")
 				archiveClassifier.set("all")
 

@@ -11,7 +11,7 @@ import org.gradle.testing.jacoco.tasks.JacocoReport
 import ru.itbasis.gradle.common.kotlin.CheckstylePlugin.Companion.CHECKSTYLE_TASK_NAME
 
 class CheckstyleJacocoAction : Action<Project> {
-	override fun execute(project: Project): Unit = project.run {
+	override fun execute(target: Project): Unit = target.run {
 		apply<JacocoPlugin>()
 
 		tasks {

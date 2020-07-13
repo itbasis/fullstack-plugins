@@ -10,7 +10,7 @@ import org.gradle.kotlin.dsl.invoke
 import ru.itbasis.gradle.common.kotlin.CheckstylePlugin.Companion.CHECKSTYLE_TASK_NAME
 
 class CheckstyleDetektAction : Action<Project> {
-	override fun execute(project: Project): Unit = project.run {
+	override fun execute(target: Project): Unit = target.run {
 		apply<DetektPlugin>()
 
 		configure<DetektExtension> {

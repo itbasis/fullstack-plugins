@@ -9,7 +9,7 @@ import org.gradle.kotlin.dsl.the
 import org.gradle.plugins.ide.idea.model.IdeaModel
 
 class ConfigureSourceSetAction : Action<Project> {
-	override fun execute(project: Project): Unit = project.run {
+	override fun execute(target: Project): Unit = target.run {
 		configure<SourceSetContainer> {
 			val mainSourceSet = this.getAt("main")
 
