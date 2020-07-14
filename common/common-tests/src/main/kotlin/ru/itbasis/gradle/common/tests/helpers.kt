@@ -4,7 +4,6 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier
 import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.repositories
 import org.gradle.testfixtures.ProjectBuilder
 import ru.itbasis.gradle.rootmodule.RootModulePlugin
 
@@ -13,7 +12,6 @@ fun initTestProject(projectBuilderConfig: ProjectBuilder.() -> Unit = {}): Proje
 	projectBuilder.apply(projectBuilderConfig)
 
 	val project = projectBuilder.build()
-	project.repositories { jcenter() }
 	project.pluginManager.apply(RootModulePlugin::class)
 	return project
 }
