@@ -31,6 +31,11 @@ class RootModulePlugin : Plugin<Project> {
 				maven(url = "http://dl.bintray.com/kotlin/kotlin-eap")
 				maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 				maven(url = "https://repo.spring.io/milestone")
+				maven(url = "https://dl.bintray.com/serpro69/maven/")
+				maven(url = "https://kotlin.bintray.com/kotlinx")
+				maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
+				maven(url = "https://repo.spring.io/milestone")
+				mavenCentral()
 			}
 		}
 

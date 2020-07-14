@@ -9,8 +9,6 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.kotlin
-import org.gradle.kotlin.dsl.maven
-import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.the
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import ru.itbasis.gradle.backend.utils.getAllPropertiesFromResources
@@ -19,14 +17,6 @@ import ru.itbasis.gradle.backend.utils.putExtraKeys
 class ConfigureBaseDependenciesAction : Action<Project> {
 	override fun execute(target: Project): Unit = target.run {
 		apply<DependencyManagementPlugin>()
-
-		repositories {
-			jcenter()
-			mavenCentral()
-			maven(url = "https://kotlin.bintray.com/kotlinx")
-			maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
-			maven(url = "https://repo.spring.io/milestone")
-		}
 
 		putExtraKeys(this@ConfigureBaseDependenciesAction.getAllPropertiesFromResources(propFileName = "versions.properties"))
 
@@ -47,7 +37,7 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 					when (requested.group) {
 						"io.github.microutils"     -> useExtraVersion("microutils")
 						"io.kotest"                -> useExtraVersion("kotest")
-						"com.github.javafaker"     -> useExtraVersion("javafaker")
+						"io.github.serpro69"       -> useExtraVersion("kotlin-faker")
 						"com.soywiz.korlibs.klock" -> useExtraVersion("korlibs.klock")
 						"commons-codec"            -> useExtraVersion("commons-codec")
 						"io.ktor"                  -> useExtraVersion("ktor")
@@ -81,7 +71,7 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 			"testImplementation"("io.kotest:kotest-assertions-core")
 			"testImplementation"("io.kotest:kotest-assertions-json")
 			"testImplementation"("io.kotest:kotest-assertions-klock")
-			"testImplementation"("com.github.javafaker:javafaker")
+			"testImplementation"("io.github.serpro69:kotlin-faker")
 		}
 	}
 }

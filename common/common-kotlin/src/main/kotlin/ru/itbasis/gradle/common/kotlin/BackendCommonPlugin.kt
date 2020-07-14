@@ -14,8 +14,6 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.kotlin
-import org.gradle.kotlin.dsl.maven
-import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.withType
 import org.gradle.plugins.ide.idea.IdeaPlugin
 import org.gradle.plugins.ide.idea.model.IdeaModel
@@ -34,11 +32,6 @@ class BackendCommonPlugin : Plugin<Project> {
 		configure<JavaPluginConvention> {
 			sourceCompatibility = javaVersion
 			targetCompatibility = javaVersion
-		}
-
-		repositories {
-			jcenter()
-			maven(url = "http://dl.bintray.com/kotlin/kotlin-eap")
 		}
 
 		dependencies {
