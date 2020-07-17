@@ -37,6 +37,7 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 					when (requested.group) {
 						"io.github.microutils"     -> useExtraVersion("microutils")
 						"io.kotest"                -> useExtraVersion("kotest")
+						"io.mockk"                 -> useExtraVersion("mockk")
 						"io.github.serpro69"       -> useExtraVersion("kotlin-faker")
 						"com.soywiz.korlibs.klock" -> useExtraVersion("korlibs.klock")
 						"commons-codec"            -> useExtraVersion("commons-codec")
@@ -72,6 +73,7 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 			"testImplementation"("io.kotest:kotest-assertions-json")
 			"testImplementation"("io.kotest:kotest-assertions-klock")
 			"testImplementation"("io.github.serpro69:kotlin-faker")
+			"testImplementation"("io.mockk:mockk")
 		}
 	}
 }
