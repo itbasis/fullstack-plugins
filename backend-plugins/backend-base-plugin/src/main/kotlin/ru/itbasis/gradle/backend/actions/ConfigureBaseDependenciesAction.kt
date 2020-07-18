@@ -26,6 +26,11 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 			}
 		}
 
+		configureResolutionStrategy(target = project)
+		configureDependencies(target = project)
+	}
+
+	private fun configureResolutionStrategy(target: Project): Unit = target.run {
 		fun DependencyResolveDetails.useExtraVersion(key: String): Unit = useVersion(extra["${key}.version"] as String)
 
 		configurations.all {
@@ -36,6 +41,8 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 				eachDependency {
 					when (requested.group) {
 						"io.github.microutils"     -> useExtraVersion("microutils")
+						"org.slf4j"                -> useExtraVersion("slf4j")
+						"ch.qos.logback"           -> useExtraVersion("logback")
 						"io.kotest"                -> useExtraVersion("kotest")
 						"io.mockk"                 -> useExtraVersion("mockk")
 						"io.github.serpro69"       -> useExtraVersion("kotlin-faker")
@@ -46,21 +53,20 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 						"org.jetbrains.kotlin"     -> useExtraVersion("kotlin")
 						"org.jetbrains.exposed"    -> useExtraVersion("exposed")
 						"org.jetbrains.kotlinx"    -> when {
+							requested.name.startsWith("kotlinx-coroutines")    -> useExtraVersion("kotlinx-coroutines")
 							requested.name.startsWith("kotlinx-serialization") -> useExtraVersion("kotlinx-serialization")
 							requested.name.startsWith("kotlinx-html")          -> useExtraVersion("kotlinx-html")
 						}
 						"org.webjars"              -> when (requested.name) {
 							"swagger-ui" -> useExtraVersion("webjars-swagger")
 						}
-						"com.amazonaws.serverless" -> useExtraVersion("aws-serverless")
-						"com.amazonaws"            -> when {
-							requested.name.startsWith("aws-java-sdk-") -> useExtraVersion("aws-java-sdk")
-						}
 					}
 				}
 			}
 		}
+	}
 
+	private fun configureDependencies(target: Project): Unit = target.run {
 		dependencies {
 			"testImplementation"(kotlin("test"))
 
