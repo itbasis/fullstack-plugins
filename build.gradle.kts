@@ -41,14 +41,11 @@ subprojects {
 
 	apply<PublishPlugin>()
 	apply<MavenPublishPlugin>()
-	if (hasBinTrayCredentials()) {
-		val bintrayUser = extra["BINTRAY_USER"] as String
-		val bintrayApiKey = extra["BINTRAY_API_KEY"] as String
-
+	binTrayCredentials()?.let {
 		apply<BintrayPlugin>()
 		configure<BintrayExtension> {
-			user = bintrayUser
-			key = bintrayApiKey
+			user = it.first
+			key = it.second
 			override = true
 			publish = true
 			setPublications("pluginMaven")

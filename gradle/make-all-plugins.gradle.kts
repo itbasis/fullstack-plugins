@@ -12,7 +12,7 @@ configure<PublishingExtension> {
 	}
 }
 
-if (hasBinTrayCredentials()) {
+binTrayCredentials()?.run {
 	configure<BintrayExtension> {
 		pkg.apply {
 			name = project.name + "-all-plugins"
