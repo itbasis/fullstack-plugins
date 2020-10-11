@@ -41,10 +41,10 @@ include(
 	":backend-plugins:backend-koin:backend-koin-service-plugin"
 )
 
-include(
-	":flutter-plugins:flutter-core-plugin",
-	":flutter-plugins:flutter-library-plugin",
-	":flutter-plugins:flutter-app-plugin"
-)
+//include(
+//	":flutter-plugins:flutter-core-plugin",
+//	":flutter-plugins:flutter-library-plugin",
+//	":flutter-plugins:flutter-app-plugin"
+//)
 
 include("root-module-plugin")

@@ -42,8 +42,8 @@ subprojects {
 	apply<PublishPlugin>()
 	apply<MavenPublishPlugin>()
 	if (hasBinTrayCredentials()) {
-		val bintrayUser = extra["bintray_user"] as String
-		val bintrayApiKey = extra["bintray_apikey"] as String
+		val bintrayUser = extra["BINTRAY_USER"] as String
+		val bintrayApiKey = extra["BINTRAY_API_KEY"] as String
 
 		apply<BintrayPlugin>()
 		configure<BintrayExtension> {
