@@ -1,8 +1,0 @@
-= Gradle Fullstack plugins
-
-image:https://img.shields.io/badge/JVM-14+-green.svg[]
-
-image:https://gitlab.com/victor.alenkov/itbasis-fullstack-plugins/badges/master/pipeline.svg[link="https://gitlab.com/victor.alenkov/itbasis-fullstack-plugins/-/commits/master",title="pipeline status"]
-image:https://gitlab.com/victor.alenkov/itbasis-fullstack-plugins/badges/master/coverage.svg[link="https://gitlab.com/victor.alenkov/itbasis-fullstack-plugins/-/commits/master",title="coverage report"]
-
-include::./root-module-plugin/README.adoc[]

@@ -1,4 +1,5 @@
-== Plugin 'IDEA root module'
+Plugin 'IDEA root module'
+-------------------------
 
 1. Adds Gradle run configurations
 2. Sets the encoding to `UTF-8`
