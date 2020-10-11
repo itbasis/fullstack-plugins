@@ -74,7 +74,7 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 			"testImplementation"("ch.qos.logback:logback-classic")
 
 			"testImplementation"("io.kotest:kotest-runner-junit5")
-			"testImplementation"("io.kotest:kotest-extensions-junit5extensions")
+			"testImplementation"("io.kotest:kotest-extensions-junit5")
 			"testImplementation"("io.kotest:kotest-property")
 			"testImplementation"("io.kotest:kotest-assertions-core")
 			"testImplementation"("io.kotest:kotest-assertions-kotlinx-time")
