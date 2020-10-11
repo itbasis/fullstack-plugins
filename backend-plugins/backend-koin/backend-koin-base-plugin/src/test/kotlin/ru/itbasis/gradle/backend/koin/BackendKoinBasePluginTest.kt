@@ -22,7 +22,7 @@ class BackendKoinBasePluginTest : FunSpec(
 				it.group == "org.koin"
 			}.map {
 				it.version
-			}.toSet() should singleElement("2.1.6")
+			}.toSet() should singleElement("2.2.0-rc-2")
 
 			project.getAllDependencies(filterPrefix = "itest").map {
 				"${it.group}:${it.module}"

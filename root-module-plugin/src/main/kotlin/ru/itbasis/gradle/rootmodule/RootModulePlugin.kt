@@ -1,6 +1,5 @@
 package ru.itbasis.gradle.rootmodule
 
-import com.gemnasium.GemnasiumGradlePlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.wrapper.Wrapper
@@ -24,11 +23,8 @@ class RootModulePlugin : Plugin<Project> {
 		}
 
 		allprojects {
-			apply<GemnasiumGradlePlugin>()
-
 			repositories {
 				jcenter()
-				maven(url = "http://dl.bintray.com/kotlin/kotlin-eap")
 				maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 				maven(url = "https://repo.spring.io/milestone")
 				maven(url = "https://dl.bintray.com/serpro69/maven/")

@@ -7,6 +7,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
 import ru.itbasis.gradle.common.ide.idea.gradleRunConfiguration
 
 plugins {
+	`kotlin-dsl`
 	`maven-publish`
 	id("ru.itbasis.gradle.root-module-plugin")
 }
@@ -25,6 +26,10 @@ allprojects {
 val kotestVersion = extra["kotest.version"] as String
 
 subprojects {
+	apply<KotlinDslPlugin>()
+	configure<KotlinDslPluginOptions> {
+		experimentalWarning.set(false)
+	}
 
 	repositories {
 		gradlePluginPortal()

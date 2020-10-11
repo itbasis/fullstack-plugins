@@ -24,7 +24,7 @@ class BackendKoinBasePlugin : AbstractPlugin() {
 		dependencies {
 			"api"("io.github.microutils:kotlin-logging")
 
-			"api"("org.jetbrains.kotlinx:kotlinx-serialization-runtime")
+			"api"("org.jetbrains.kotlinx:kotlinx-serialization-json")
 
 			"api"("org.koin:koin-core-ext")
 

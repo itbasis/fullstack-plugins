@@ -40,24 +40,25 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 
 				eachDependency {
 					when (requested.group) {
-						"io.github.microutils"     -> useExtraVersion("microutils")
-						"org.slf4j"                -> useExtraVersion("slf4j")
-						"ch.qos.logback"           -> useExtraVersion("logback")
-						"io.kotest"                -> useExtraVersion("kotest")
-						"io.mockk"                 -> useExtraVersion("mockk")
-						"io.github.serpro69"       -> useExtraVersion("kotlin-faker")
-						"com.soywiz.korlibs.klock" -> useExtraVersion("korlibs.klock")
-						"commons-codec"            -> useExtraVersion("commons-codec")
-						"io.ktor"                  -> useExtraVersion("ktor")
-						"org.koin"                 -> useExtraVersion("koin")
-						"org.jetbrains.kotlin"     -> useExtraVersion("kotlin")
-						"org.jetbrains.exposed"    -> useExtraVersion("exposed")
-						"org.jetbrains.kotlinx"    -> when {
+						"io.github.microutils" -> useExtraVersion("microutils-logging")
+						"org.slf4j" -> useExtraVersion("slf4j")
+						"ch.qos.logback" -> useExtraVersion("logback")
+						"io.kotest" -> useExtraVersion("kotest")
+						"io.mockk" -> useExtraVersion("mockk")
+						"io.github.serpro69" -> useExtraVersion("kotlin-faker")
+						"commons-codec" -> useExtraVersion("commons-codec")
+						"io.ktor" -> useExtraVersion("ktor")
+						"org.koin" -> useExtraVersion("koin")
+						"org.kodein.di" -> useExtraVersion("kodein-di")
+						"org.jetbrains.kotlin" -> useExtraVersion("kotlin")
+						"org.jetbrains.exposed" -> useExtraVersion("exposed")
+						"org.jetbrains.kotlinx" -> when {
 							requested.name.startsWith("kotlinx-coroutines")    -> useExtraVersion("kotlinx-coroutines")
 							requested.name.startsWith("kotlinx-serialization") -> useExtraVersion("kotlinx-serialization")
 							requested.name.startsWith("kotlinx-html")          -> useExtraVersion("kotlinx-html")
+							requested.name.startsWith("kotlinx-datetime")      -> useExtraVersion("kotlinx-datetime")
 						}
-						"org.webjars"              -> when (requested.name) {
+						"org.webjars" -> when (requested.name) {
 							"swagger-ui" -> useExtraVersion("webjars-swagger")
 						}
 					}
@@ -68,15 +69,16 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 
 	private fun configureDependencies(target: Project): Unit = target.run {
 		dependencies {
-			"testImplementation"(kotlin("test"))
+			"implementation"("org.jetbrains.kotlinx:kotlinx-datetime")
 
 			"testImplementation"("ch.qos.logback:logback-classic")
 
 			"testImplementation"("io.kotest:kotest-runner-junit5")
+			"testImplementation"("io.kotest:kotest-extensions-junit5extensions")
 			"testImplementation"("io.kotest:kotest-property")
 			"testImplementation"("io.kotest:kotest-assertions-core")
+			"testImplementation"("io.kotest:kotest-assertions-kotlinx-time")
 			"testImplementation"("io.kotest:kotest-assertions-json")
-			"testImplementation"("io.kotest:kotest-assertions-klock")
 			"testImplementation"("io.github.serpro69:kotlin-faker")
 			"testImplementation"("io.mockk:mockk")
 		}

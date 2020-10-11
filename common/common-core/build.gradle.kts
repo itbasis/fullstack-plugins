@@ -1,7 +1,7 @@
-plugins {
-	`kotlin-dsl`
-}
-
-configure<KotlinDslPluginOptions> {
-	experimentalWarning.set(false)
-}
+//plugins {
+//	`kotlin-dsl`
+//}
+//
+//configure<KotlinDslPluginOptions> {
+//	experimentalWarning.set(false)
+//}

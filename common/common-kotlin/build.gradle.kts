@@ -1,7 +1,3 @@
-plugins {
-	`kotlin-dsl`
-}
-
 configure<GradlePluginDevelopmentExtension> {
 	plugins {
 		register("backend-common-plugin") {
@@ -11,14 +7,14 @@ configure<GradlePluginDevelopmentExtension> {
 	}
 }
 
-val gradleDetektVersion = extra["gradle-detekt.version"] as String
+val detektVersion = extra["detekt.version"] as String
 
 dependencies {
 	api(kotlin("gradle-plugin"))
 
 	api(project(":common:common-core"))
 
-	api("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$gradleDetektVersion")
+	api("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
 
 	testImplementation(project(":common:common-tests"))
 }

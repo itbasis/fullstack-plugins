@@ -23,9 +23,8 @@ gradlePlugin {
 	}
 }
 
-val gradleDetektVersion = extra["gradle-detekt.version"] as String
-val gradleIdeaExtVersion = extra["gradle-idea-ext.version"] as String
-val gradleGemnasiumVersion = extra["gradle-gemnasium.version"] as String
+val detektVersion = extra["detekt.version"] as String
+val ideaExtVersion = extra["idea-ext.version"] as String
 
 configurations.all {
 	resolutionStrategy {
@@ -39,11 +38,9 @@ configurations.all {
 dependencies {
 	api(kotlin("gradle-plugin"))
 
-	api("gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:$gradleIdeaExtVersion")
-	api("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$gradleDetektVersion")
+	api("gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:$ideaExtVersion")
+	api("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
 
 	api("com.gradle.publish:plugin-publish-plugin:+")
 	api("com.jfrog.bintray.gradle:gradle-bintray-plugin:+")
-
-	api("com.gemnasium:gradle-plugin:$gradleGemnasiumVersion")
 }

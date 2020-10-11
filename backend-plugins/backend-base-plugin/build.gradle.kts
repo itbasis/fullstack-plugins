@@ -27,7 +27,11 @@ tasks {
 			expand(
 				project.properties.plus(
 					listOf(
-						"kotlinVersion" to kotlinVersion
+						"kotlinVersion" to kotlinVersion,
+						"kotestVersion" to project.extra["kotest.version"] as String,
+						"detektVersion" to project.extra["detekt.version"] as String,
+						"kotlinxSerializationVersion" to project.extra["kotlinx-serialization.version"] as String,
+						"kotlinxCoroutinesVersion" to project.extra["kotlinx-coroutines.version"] as String
 					)
 				)
 			)

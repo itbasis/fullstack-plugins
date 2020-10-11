@@ -18,7 +18,8 @@ class BackendKoinServicePluginTest : FunSpec(
 			project.plugins.getPlugin(BackendKoinServicePlugin::class.java) shouldNotBe null
 
 			project.dependencies {
-				"api"("org.jetbrains.kotlinx:kotlinx-html-js")
+//				"api"("org.jetbrains.kotlinx:kotlinx-html-js")
+				"api"("org.jetbrains.kotlinx:kotlinx-html-jvm")
 			}
 
 			val allDependencies = project.getAllDependencies()
@@ -27,13 +28,14 @@ class BackendKoinServicePluginTest : FunSpec(
 				it.group == "io.ktor"
 			}.map {
 				it.version
-			}.toSet() should singleElement("1.3.2")
+			}.toSet() should singleElement("1.4.1")
 
 			allDependencies.filter {
-				it.module == "kotlinx-html-js"
+//				it.module == "kotlinx-html-js"
+				it.module == "kotlinx-html-jvm"
 			}.map {
 				it.version
-			} should singleElement("0.7.1")
+			} should singleElement("0.7.2")
 		}
 
 		test("fatJar") {

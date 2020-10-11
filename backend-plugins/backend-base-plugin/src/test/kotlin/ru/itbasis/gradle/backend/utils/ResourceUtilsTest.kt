@@ -13,16 +13,17 @@ class ResourceUtilsTest : FunSpec(
 
 			project.extra.has("kotlin.version") shouldBe false
 
-			project.putExtraKeys(keys = mapOf("kotlin.version" to "1.3.61"))
-			project.extra.get("kotlin.version") shouldBe "1.3.61"
+			project.putExtraKeys(keys = mapOf("kotlin.version" to "1.4.0"))
+			project.extra.get("kotlin.version") shouldBe "1.4.0"
 
-			project.putExtraKeys(keys = mapOf("kotlin.version" to "1.3.71"))
-			project.extra.get("kotlin.version") shouldBe "1.3.61"
+			project.putExtraKeys(keys = mapOf("kotlin.version" to "1.4.10"))
+			project.extra.get("kotlin.version") shouldBe "1.4.0"
+//		FIXME	project.extra.get("kotlin.version") shouldBe "1.4.0"
 		}
 
-		test("put exist extra key"){
+		test("put exist extra key") {
 
-			val project = initTestProject{
+			val project = initTestProject {
 //				withProjectDir()
 			}
 		}

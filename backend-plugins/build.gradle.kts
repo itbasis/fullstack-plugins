@@ -1,14 +1,4 @@
-plugins {
-	`kotlin-dsl`
-}
-
 subprojects {
-	apply<KotlinDslPlugin>()
-
-	configure<KotlinDslPluginOptions> {
-		experimentalWarning.set(false)
-	}
-
 	if (!name.endsWith("-plugin")) {
 		apply(from = rootDir.resolve("gradle/make-all-plugins.gradle.kts"))
 	}
