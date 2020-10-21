@@ -12,9 +12,7 @@ import ru.itbasis.gradle.common.ide.idea.gradleRunConfiguration
 @Suppress("unused")
 class RootModulePlugin : Plugin<Project> {
 	override fun apply(target: Project): Unit = target.run {
-		check(target == rootProject) {
-			"The plugin can only be used in the root project."
-		}
+		if (target != rootProject) return
 
 		apply<IdeaModuleRootPlugin>()
 
