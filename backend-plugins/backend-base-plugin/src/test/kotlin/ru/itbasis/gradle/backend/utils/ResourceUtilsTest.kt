@@ -16,7 +16,7 @@ class ResourceUtilsTest : FunSpec(
 			project.putExtraKeys(keys = mapOf("kotlin.version" to "1.4.0"))
 			project.extra.get("kotlin.version") shouldBe "1.4.0"
 
-			project.putExtraKeys(keys = mapOf("kotlin.version" to "1.4.10"))
+			project.putExtraKeys(keys = mapOf("kotlin.version" to "1.4.20"))
 			project.extra.get("kotlin.version") shouldBe "1.4.0"
 //		FIXME	project.extra.get("kotlin.version") shouldBe "1.4.0"
 		}
