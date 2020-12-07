@@ -6,6 +6,7 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.JavaVersion.VERSION_12
 import org.gradle.api.JavaVersion.VERSION_13
 import org.gradle.api.JavaVersion.VERSION_14
+import org.gradle.api.JavaVersion.VERSION_15
 import org.gradle.api.JavaVersion.VERSION_1_8
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -22,7 +23,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 class BackendCommonPlugin : Plugin<Project> {
-	private val javaCompatibles = listOf(VERSION_14, VERSION_13, VERSION_12, VERSION_1_8)
+	private val javaCompatibles = listOf(VERSION_15, VERSION_14, VERSION_13, VERSION_12, VERSION_1_8)
 
 	override fun apply(target: Project): Unit = target.run {
 		apply<KotlinPluginWrapper>()

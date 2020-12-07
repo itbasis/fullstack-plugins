@@ -7,8 +7,12 @@ configure<GradlePluginDevelopmentExtension> {
 	}
 }
 
+val koinVersion = project.extra["koin.version"] as String
+
 dependencies {
 	api(kotlin("serialization"))
 
 	api(project(":backend-plugins:backend-base-plugin"))
+
+	api("org.koin:koin-gradle-plugin:$koinVersion")
 }

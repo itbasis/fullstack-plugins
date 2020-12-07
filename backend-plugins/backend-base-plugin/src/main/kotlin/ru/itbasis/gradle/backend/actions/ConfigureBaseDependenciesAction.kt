@@ -8,7 +8,6 @@ import org.gradle.api.artifacts.DependencyResolveDetails
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.extra
-import org.gradle.kotlin.dsl.kotlin
 import org.gradle.kotlin.dsl.the
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import ru.itbasis.gradle.backend.utils.getAllPropertiesFromResources
@@ -31,6 +30,7 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 	}
 
 	private fun configureResolutionStrategy(target: Project): Unit = target.run {
+		@Suppress("ktNoinlineFunc")
 		fun DependencyResolveDetails.useExtraVersion(key: String): Unit = useVersion(extra["${key}.version"] as String)
 
 		configurations.all {
@@ -40,27 +40,33 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 
 				eachDependency {
 					when (requested.group) {
-						"io.github.microutils" -> useExtraVersion("microutils-logging")
-						"org.slf4j" -> useExtraVersion("slf4j")
-						"ch.qos.logback" -> useExtraVersion("logback")
-						"io.kotest" -> useExtraVersion("kotest")
-						"io.mockk" -> useExtraVersion("mockk")
-						"io.github.serpro69" -> useExtraVersion("kotlin-faker")
-						"commons-codec" -> useExtraVersion("commons-codec")
-						"io.ktor" -> useExtraVersion("ktor")
-						"org.koin" -> useExtraVersion("koin")
-						"org.kodein.di" -> useExtraVersion("kodein-di")
-						"org.jetbrains.kotlin" -> useExtraVersion("kotlin")
-						"org.jetbrains.exposed" -> useExtraVersion("exposed")
-						"org.jetbrains.kotlinx" -> when {
+						"io.github.microutils"             -> useExtraVersion("microutils-logging")
+						"org.slf4j"                        -> useExtraVersion("slf4j")
+						"ch.qos.logback"                   -> useExtraVersion("logback")
+						"io.kotest"                        -> useExtraVersion("kotest")
+						"io.mockk"                         -> useExtraVersion("mockk")
+						"io.github.serpro69"               -> useExtraVersion("kotlin-faker")
+						"commons-codec"                    -> useExtraVersion("commons-codec")
+						"io.ktor"                          -> useExtraVersion("ktor")
+						"org.koin"                         -> useExtraVersion("koin")
+						"org.kodein.di"                    -> useExtraVersion("kodein-di")
+						"org.jetbrains.kotlin"             -> useExtraVersion("kotlin")
+						"org.jetbrains.exposed"            -> useExtraVersion("exposed")
+						"org.jetbrains.kotlinx"            -> when {
 							requested.name.startsWith("kotlinx-coroutines")    -> useExtraVersion("kotlinx-coroutines")
 							requested.name.startsWith("kotlinx-serialization") -> useExtraVersion("kotlinx-serialization")
 							requested.name.startsWith("kotlinx-html")          -> useExtraVersion("kotlinx-html")
 							requested.name.startsWith("kotlinx-datetime")      -> useExtraVersion("kotlinx-datetime")
 						}
-						"org.webjars" -> when (requested.name) {
+						"org.webjars"                      -> when (requested.name) {
 							"swagger-ui" -> useExtraVersion("webjars-swagger")
 						}
+
+						"com.fasterxml.jackson"            -> useExtraVersion("jackson")
+						"com.fasterxml.jackson.core"       -> useExtraVersion("jackson")
+						"com.fasterxml.jackson.datatype"   -> useExtraVersion("jackson")
+						"com.fasterxml.jackson.module"     -> useExtraVersion("jackson")
+						"com.fasterxml.jackson.dataformat" -> useExtraVersion("jackson")
 					}
 				}
 			}

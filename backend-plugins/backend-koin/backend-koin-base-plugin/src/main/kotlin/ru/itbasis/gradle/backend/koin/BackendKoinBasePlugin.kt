@@ -9,6 +9,7 @@ import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 import org.jetbrains.kotlinx.serialization.gradle.SerializationGradleSubplugin
+import org.koin.gradle.KoinPlugin
 import ru.itbasis.gradle.backend.AbstractPlugin
 import ru.itbasis.gradle.backend.BackendBasePlugin
 
@@ -16,9 +17,11 @@ class BackendKoinBasePlugin : AbstractPlugin() {
 	override fun apply(target: Project): Unit = target.run {
 		apply<BackendBasePlugin>()
 		apply<SerializationGradleSubplugin>()
+		apply<KoinPlugin>()
 
 		repositories {
 			maven(url = "https://kotlin.bintray.com/ktor")
+			maven(url = "https://dl.bintray.com/ekito/koin")
 		}
 
 		dependencies {

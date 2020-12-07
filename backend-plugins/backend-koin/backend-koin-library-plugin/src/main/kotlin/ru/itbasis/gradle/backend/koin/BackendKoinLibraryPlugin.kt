@@ -14,6 +14,7 @@ class BackendKoinLibraryPlugin : AbstractPlugin() {
 
 			"api"("io.ktor:ktor-jackson")
 			"api"("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+			"api"("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
 		}
 	}
 }

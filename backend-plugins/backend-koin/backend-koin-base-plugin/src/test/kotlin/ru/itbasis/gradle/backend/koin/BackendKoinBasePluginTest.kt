@@ -18,15 +18,16 @@ class BackendKoinBasePluginTest : FunSpec(
 			project.plugins.getPlugin(DependencyManagementPlugin::class.java) shouldNotBe null
 			project.plugins.getPlugin(BackendKoinBasePlugin::class.java) shouldNotBe null
 
-			project.getAllDependencies().filter {
-				it.group == "org.koin"
-			}.map {
-				it.version
-			}.toSet() should singleElement("2.2.0")
+			val allDependencies = project.getAllDependencies()
+			allDependencies.filter { it.group == "org.koin" }.map { it.version }.toSet() should singleElement("3.0.0-alpha-4")
+
+			val jacksonVersion = "2.12.0"
+			allDependencies.filter { it.group == "com.fasterxml.jackson.core" }.map { it.version }.toSet() should singleElement(jacksonVersion)
+			allDependencies.filter { it.group == "com.fasterxml.jackson.dataformat" }.map { it.version }.toSet() should singleElement(jacksonVersion)
 
 			project.getAllDependencies(filterPrefix = "itest").map {
 				"${it.group}:${it.module}"
-			} shouldContain "org.koin:koin-test"
+			} shouldContain "org.koin:koin-test-jvm"
 		}
 	}
 )

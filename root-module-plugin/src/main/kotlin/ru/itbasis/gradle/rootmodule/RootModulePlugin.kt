@@ -28,6 +28,7 @@ class RootModulePlugin : Plugin<Project> {
 				maven(url = "https://dl.bintray.com/serpro69/maven/")
 				maven(url = "https://kotlin.bintray.com/kotlinx")
 				maven(url = "https://repo.spring.io/milestone")
+				maven(url = "https://dl.bintray.com/ekito/koin")
 				mavenCentral()
 			}
 		}
