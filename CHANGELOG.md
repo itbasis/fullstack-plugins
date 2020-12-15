@@ -1,12 +1,12 @@
 # 0.8.1
-* update [Detekt](https://github.com/detekt/detekt) 1.15.0-RC2 * update [Detekt](https://github.com/detekt/detekt) 1.15.0-RC2
-* update Kotest 4.3.2
+* update [Detekt](https://github.com/detekt/detekt) 1.15.0-RC2
+* update [Kotest](https://github.com/kotest/kotest) 4.3.2
 * update [Kotlin](https://github.com/JetBrains/kotlin) 1.4.21
 * update [kotlin-logging](https://github.com/MicroUtils/kotlin-logging) 2.0.4
 * update [Kotlin-Faker](https://github.com/serpro69/kotlin-faker) 1.6.0-rc.1
 * refactoring repositories
 
-* update Kotest 4.3.2
+* update [Kotest](https://github.com/kotest/kotest) 4.3.2
 * update [Kotlin](https://github.com/JetBrains/kotlin) 1.4.21
 * update [kotlin-logging](https://github.com/MicroUtils/kotlin-logging) 2.0.4
 * update [Kotlin-Faker](https://github.com/serpro69/kotlin-faker) 1.6.0-rc.1
