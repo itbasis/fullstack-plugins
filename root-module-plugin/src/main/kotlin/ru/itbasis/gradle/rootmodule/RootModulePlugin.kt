@@ -23,12 +23,7 @@ class RootModulePlugin : Plugin<Project> {
 		allprojects {
 			repositories {
 				jcenter()
-				maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 				maven(url = "https://repo.spring.io/milestone")
-				maven(url = "https://dl.bintray.com/serpro69/maven/")
-				maven(url = "https://kotlin.bintray.com/kotlinx")
-				maven(url = "https://repo.spring.io/milestone")
-				maven(url = "https://dl.bintray.com/ekito/koin")
 				mavenCentral()
 			}
 		}

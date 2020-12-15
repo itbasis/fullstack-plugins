@@ -8,6 +8,8 @@ import org.gradle.api.artifacts.DependencyResolveDetails
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.extra
+import org.gradle.kotlin.dsl.maven
+import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.the
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import ru.itbasis.gradle.backend.utils.getAllPropertiesFromResources
@@ -23,6 +25,12 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 			imports {
 				mavenBom(SpringBootPlugin.BOM_COORDINATES)
 			}
+		}
+
+		repositories {
+			maven(url = "https://dl.bintray.com/serpro69/maven/")
+			maven(url = "https://dl.bintray.com/serpro69/maven-release-candidates/")
+			maven(url = "https://kotlin.bintray.com/kotlinx")
 		}
 
 		configureResolutionStrategy(target = project)
