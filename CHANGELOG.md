@@ -1,3 +1,8 @@
+# 0.8.2
+* update [Gradle](https://github.com/gradle/gradle) 6.8 RC4
+* update [Detekt](https://github.com/detekt/detekt) 1.15.0
+* update [Ktor](https://github.com/ktorio/ktor/) 1.5.0
+
 # 0.8.1
 * update [Detekt](https://github.com/detekt/detekt) 1.15.0-RC2
 * update [Kotest](https://github.com/kotest/kotest) 4.3.2

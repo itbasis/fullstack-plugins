@@ -28,7 +28,7 @@ class BackendKoinServicePluginTest : FunSpec(
 				it.group == "io.ktor"
 			}.map {
 				it.version
-			}.toSet() should singleElement("1.4.3")
+			}.toSet() should singleElement("1.5.0")
 
 			allDependencies.filter {
 //				it.module == "kotlinx-html-js"
