@@ -1,3 +1,9 @@
+# 0.8.3
+* update [Gradle](https://github.com/gradle/gradle) 6.8.1
+* update [Kodein DI](https://github.com/Kodein-Framework/Kodein-DI) 7.2.0
+* update [mockk](https://github.com/mockk/mockk) 1.10.4
+* update [Kotlin-Faker](https://github.com/serpro69/kotlin-faker) 1.6.0
+
 # 0.8.2
 * update [Gradle](https://github.com/gradle/gradle) 6.8 RC4
 * update [Detekt](https://github.com/detekt/detekt) 1.15.0
