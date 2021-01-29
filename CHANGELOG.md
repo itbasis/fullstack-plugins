@@ -1,3 +1,9 @@
+# 0.8.4
+* update [mockk](https://github.com/mockk/mockk) 1.10.5
+* update [Detekt](https://github.com/detekt/detekt) 1.16.0-RC1
+* update [Exposed](https://github.com/JetBrains/Exposed) 0.29.1
+* update [Ktor](https://github.com/ktorio/ktor/) 1.5.1
+
 # 0.8.3
 * update [Gradle](https://github.com/gradle/gradle) 6.8.1
 * update [Kodein DI](https://github.com/Kodein-Framework/Kodein-DI) 7.2.0
