@@ -1,3 +1,11 @@
+# 0.8.5
+* update [Gradle](https://github.com/gradle/gradle) 7.0 M1
+* update [Kotlin](https://github.com/JetBrains/kotlin) 1.4.30
+* update [Kotest](https://github.com/kotest/kotest) 4.3.2
+* update [KotlinX DateTime](https://github.com/Kotlin/kotlinx-datetime) 0.1.1
+* update [FasterXML Jackson](https://github.com/FasterXML) 2.12.1
+* update [Swagger UI](https://github.com/swagger-api/swagger-ui) 3.40.0
+
 # 0.8.4
 * update [mockk](https://github.com/mockk/mockk) 1.10.5
 * update [Detekt](https://github.com/detekt/detekt) 1.16.0-RC1

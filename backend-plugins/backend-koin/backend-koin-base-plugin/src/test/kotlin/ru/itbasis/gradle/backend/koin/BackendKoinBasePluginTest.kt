@@ -21,7 +21,7 @@ class BackendKoinBasePluginTest : FunSpec(
 			val allDependencies = project.getAllDependencies()
 			allDependencies.filter { it.group == "org.koin" }.map { it.version }.toSet() should singleElement("3.0.0-alpha-4")
 
-			val jacksonVersion = "2.12.0"
+			val jacksonVersion = "2.12.1"
 			allDependencies.filter { it.group == "com.fasterxml.jackson.core" }.map { it.version }.toSet() should singleElement(jacksonVersion)
 			allDependencies.filter { it.group == "com.fasterxml.jackson.dataformat" }.map { it.version }.toSet() should singleElement(jacksonVersion)
 
