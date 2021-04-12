@@ -1,5 +1,4 @@
 
-import com.jfrog.bintray.gradle.BintrayExtension
 import ru.itbasis.gradle.common.kotlin.CheckstylePlugin
 
 plugins {
@@ -22,12 +21,6 @@ subprojects {
 						artifactId = project.name + "-all-plugins"
 					}
 				}
-			}
-		}
-
-		configure<BintrayExtension> {
-			pkg.apply {
-				name = project.name + "-all-plugins"
 			}
 		}
 

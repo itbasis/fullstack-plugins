@@ -1,6 +1,4 @@
 import com.gradle.publish.PublishPlugin
-import com.jfrog.bintray.gradle.BintrayExtension
-import com.jfrog.bintray.gradle.BintrayPlugin
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
 import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
 import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
@@ -36,23 +34,6 @@ subprojects {
 
 	apply<PublishPlugin>()
 	apply<MavenPublishPlugin>()
-
-	(extra["bintray_user"] as? String)?.let { bintrayUser ->
-		(extra["bintray_apikey"] as? String)?.let { bintrayApiKey ->
-			apply<BintrayPlugin>()
-			configure<BintrayExtension> {
-				user = bintrayUser
-				key = bintrayApiKey
-				override = true
-				publish = true
-				setPublications("pluginMaven")
-				pkg.apply {
-					repo = group as String
-					name = this@subprojects.name
-				}
-			}
-		}
-	}
 
 	tasks {
 		withType(Test::class) {

@@ -1,5 +1,4 @@
 import com.gradle.publish.PluginBundleExtension
-import com.jfrog.bintray.gradle.BintrayExtension
 import ru.itbasis.gradle.common.kotlin.CheckstylePlugin
 
 plugins {
@@ -15,12 +14,6 @@ configure<PublishingExtension> {
 				artifactId = project.name + "-all-plugins"
 			}
 		}
-	}
-}
-
-configure<BintrayExtension> {
-	pkg.apply {
-		name = project.name + "-all-plugins"
 	}
 }
 
