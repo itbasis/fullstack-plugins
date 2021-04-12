@@ -14,8 +14,8 @@ class BackendKoinServicePluginTest : FunSpec(
 			val project = initTestProject()
 			project.pluginManager.apply("ru.itbasis.gradle.backend-koin-service-plugin")
 
-			project.plugins.getPlugin(BackendKoinBasePlugin::class.java) shouldNotBe null
-			project.plugins.getPlugin(BackendKoinServicePlugin::class.java) shouldNotBe null
+			project.plugins.findPlugin(BackendKoinBasePlugin::class.java) shouldNotBe null
+			project.plugins.findPlugin(BackendKoinServicePlugin::class.java) shouldNotBe null
 
 			project.dependencies {
 //				"api"("org.jetbrains.kotlinx:kotlinx-html-js")
@@ -28,7 +28,7 @@ class BackendKoinServicePluginTest : FunSpec(
 				it.group == "io.ktor"
 			}.map {
 				it.version
-			}.toSet() should singleElement("1.5.1")
+			}.toSet() should singleElement("1.5.2")
 
 			allDependencies.filter {
 //				it.module == "kotlinx-html-js"

@@ -1,11 +1,19 @@
-# default rules: https://github.com/arturbosch/detekt/blob/master/detekt-cli/src/main/resources/default-detekt-config.yml
+# default rules: https://github.com/detekt/detekt/blob/master/detekt-core/src/main/resources/default-detekt-config.yml
+
+formatting:
+  MaximumLineLength:
+    maxLineLength: 150
+  CommentSpacing:
+    active: false
+  NoMultipleSpaces:
+    active: false
 
 style:
-   ReturnCount:
-      active: false
-   ThrowsCount:
-      active: false
-   MaxLineLength:
-      maxLineLength: 150
-   UnusedImports:
-      active: true
+  ReturnCount:
+    active: false
+  ThrowsCount:
+    active: false
+  MaxLineLength:
+    maxLineLength: 150
+  UnusedImports:
+    active: true

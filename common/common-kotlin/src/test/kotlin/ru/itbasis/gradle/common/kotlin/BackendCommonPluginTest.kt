@@ -14,7 +14,7 @@ class BackendCommonPluginTest : FunSpec(
 			project.repositories { jcenter() }
 			project.pluginManager.apply("ru.itbasis.gradle.backend-common-plugin")
 
-			project.plugins.getPlugin(BackendCommonPlugin::class.java) shouldNotBe null
+			project.plugins.findPlugin(BackendCommonPlugin::class.java) shouldNotBe null
 
 			val allDependencies = project.getAllDependencies()
 

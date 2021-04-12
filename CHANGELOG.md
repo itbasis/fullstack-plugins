@@ -1,3 +1,17 @@
+# 0.8.6
+* update [Kodein DI](https://github.com/Kodein-Framework/Kodein-DI) 7.3.0
+* update [Liquibase](https://github.com/liquibase/liquibase) 4.3.1
+* update [mockk](https://github.com/mockk/mockk) 1.11.0
+* update [Detekt](https://github.com/detekt/detekt) 1.16.0
+* update [Ktor](https://github.com/ktorio/ktor/) 1.5.2
+* update [Kotlin-Faker](https://github.com/serpro69/kotlin-faker) 1.7.0-rc.1
+* update [kotlin-logging](https://github.com/MicroUtils/kotlin-logging) 2.0.5
+* update [Ktor](https://github.com/ktorio/ktor/) 1.5.3
+* update [Kotest](https://github.com/kotest/kotest) 4.4.3
+* update [Kotlin](https://github.com/JetBrains/kotlin) 1.4.31
+* Enable [new JVM IR backend](https://blog.jetbrains.com/kotlin/2021/02/the-jvm-backend-is-in-beta-let-s-make-it-stable-together/)
+* Removed Kodein from dependency management
+
 # 0.8.5
 * update [Gradle](https://github.com/gradle/gradle) 7.0 M1
 * update [Kotlin](https://github.com/JetBrains/kotlin) 1.4.30

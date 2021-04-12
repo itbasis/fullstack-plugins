@@ -8,6 +8,7 @@ max_line_length                                     = 150
 tab_width                                           = 3
 indent_style                                        = tab
 indent_size                                         = tab
+ij_smart_tabs                                       = true
 ij_any_enum_constants_wrap                          = on_every_item
 ij_any_align_multiline_chained_methods              = true
 ij_any_align_multiline_assignment                   = true

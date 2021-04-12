@@ -44,6 +44,7 @@ class BackendCommonPlugin : Plugin<Project> {
 			withType(KotlinJvmCompile::class) {
 				kotlinOptions {
 					jvmTarget = (javaCompatibles.firstOrNull { javaVersion.isCompatibleWith(it) } ?: VERSION_1_8).toString()
+					useIR = true
 
 					@Suppress("SpellCheckingInspection")
 					freeCompilerArgs = freeCompilerArgs + listOf("-Xjsr305=strict", "-Xuse-experimental=kotlin.Experimental")

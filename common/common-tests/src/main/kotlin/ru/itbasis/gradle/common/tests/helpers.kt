@@ -21,13 +21,16 @@ fun Project.getAllDependenciesAsRows(filterPrefix: String = "") = getAllDependen
 }
 
 fun Project.getAllDependencies(filterPrefix: String = "") = configurations.asSequence().filter {
-	it.name.startsWith(prefix = filterPrefix, ignoreCase = true)
-		&& it.isCanBeResolved
-		&& !it.name.endsWith("Metadata")
+	it.name.startsWith(prefix = filterPrefix, ignoreCase = true) &&
+		it.isCanBeResolved &&
+		!it.name.endsWith("Metadata")
 }.getAllDependencies()
 
 fun Sequence<Configuration>.getAllDependencies() = map {
-	it.resolvedConfiguration.resolvedArtifacts
+	println("it: $it")
+	val cfg = it.resolvedConfiguration
+	println("cfg: $cfg")
+	cfg.resolvedArtifacts
 }.flatten().distinct().map {
 	it.id.componentIdentifier
 }.filterIsInstance(ModuleComponentIdentifier::class.java).toList()

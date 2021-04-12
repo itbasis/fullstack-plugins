@@ -11,8 +11,8 @@ class RootModulePluginTest : FunSpec(
 			val project = ProjectBuilder.builder().build()
 			project.pluginManager.apply("ru.itbasis.gradle.root-module-plugin")
 
-			project.plugins.getPlugin(RootModulePlugin::class.java) shouldNotBe null
-			project.plugins.getPlugin(IdeaExtPlugin::class.java) shouldNotBe null
+			project.plugins.findPlugin(RootModulePlugin::class.java) shouldNotBe null
+			project.plugins.findPlugin(IdeaExtPlugin::class.java) shouldNotBe null
 		}
 	}
 )

@@ -1,35 +1,32 @@
 package ru.itbasis.gradle.backend.actions
 
-import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
-import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.artifacts.DependencyResolveDetails
-import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.maven
 import org.gradle.kotlin.dsl.repositories
-import org.gradle.kotlin.dsl.the
-import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import ru.itbasis.gradle.backend.utils.getAllPropertiesFromResources
 import ru.itbasis.gradle.backend.utils.putExtraKeys
 
 class ConfigureBaseDependenciesAction : Action<Project> {
 	override fun execute(target: Project): Unit = target.run {
-		apply<DependencyManagementPlugin>()
+//		apply<DependencyManagementPlugin>()
 
-		putExtraKeys(this@ConfigureBaseDependenciesAction.getAllPropertiesFromResources(propFileName = "versions.properties"))
+		putExtraKeys(this@ConfigureBaseDependenciesAction.getAllPropertiesFromResources(propFileName = "dep-versions.properties"))
 
-		the<DependencyManagementExtension>().apply {
-			imports {
-				mavenBom(SpringBootPlugin.BOM_COORDINATES)
-			}
-		}
+//		the<DependencyManagementExtension>().apply {
+//			imports {
+//				mavenBom(SpringBootPlugin.BOM_COORDINATES)
+//			}
+//		}
 
 		repositories {
+			// Kotlin-Faker
 			maven(url = "https://dl.bintray.com/serpro69/maven/")
 			maven(url = "https://dl.bintray.com/serpro69/maven-release-candidates/")
+
 			maven(url = "https://kotlin.bintray.com/kotlinx")
 		}
 
@@ -39,7 +36,7 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 
 	private fun configureResolutionStrategy(target: Project): Unit = target.run {
 		@Suppress("ktNoinlineFunc")
-		fun DependencyResolveDetails.useExtraVersion(key: String): Unit = useVersion(extra["${key}.version"] as String)
+		fun DependencyResolveDetails.useExtraVersion(key: String): Unit = useVersion(extra["$key.version"] as String)
 
 		configurations.all {
 			resolutionStrategy {
@@ -57,7 +54,6 @@ class ConfigureBaseDependenciesAction : Action<Project> {
 						"commons-codec"                    -> useExtraVersion("commons-codec")
 						"io.ktor"                          -> useExtraVersion("ktor")
 						"org.koin"                         -> useExtraVersion("koin")
-						"org.kodein.di"                    -> useExtraVersion("kodein-di")
 						"org.jetbrains.kotlin"             -> useExtraVersion("kotlin")
 						"org.jetbrains.exposed"            -> useExtraVersion("exposed")
 						"org.jetbrains.kotlinx"            -> when {
