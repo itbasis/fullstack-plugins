@@ -1,102 +1,61 @@
-import com.gradle.publish.PublishPlugin
-import com.jfrog.bintray.gradle.BintrayExtension
-import com.jfrog.bintray.gradle.BintrayPlugin
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
-import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
-import ru.itbasis.gradle.common.ide.idea.gradleRunConfiguration
+
+import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
+import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 plugins {
-	`kotlin-dsl`
-	`maven-publish`
-	id("ru.itbasis.gradle.root-module-plugin")
+	`kotlin-dsl` apply false
+	id("com.gradle.plugin-publish").version("0.14.0").apply(false)
+	id("io.gitlab.arturbosch.detekt").version("1.18.1")
+	id("org.jetbrains.gradle.plugin.idea-ext").version("1.1")
+}
+// apply<RootModulePlugin>()
+
+// plugins {
+// 	id("com.github.ben-manes.versions") version Libs.gradleVersionsPluginVersion
+// 	id("com.namics.oss.gradle.license-enforce-plugin") version Libs.gradleLicenseEnforcePluginVersion
+// 	id("io.gitlab.arturbosch.detekt") version Libs.gradleDetektPluginVersion
+// }
+
+tasks {
+	wrapper {
+		distributionType = DistributionType.ALL
+	}
+// 	maybeCreate(PROCESS_RESOURCES_TASK_NAME).dependsOn(
+// 		subprojects.filter { 
+// 			it.plugins.hasPlugin("org.gradle.maven-publish")
+// 		}
+// 	)
 }
 
-allprojects {
-	configurations.all {
-		resolutionStrategy {
-			eachDependency {
-				when (requested.group) {
-					"org.jetbrains.kotlin" -> useVersion(embeddedKotlinVersion)
-				}
-			}
-		}
-	}
-}
-val kotestVersion = extra["kotest.version"] as String
+val jdkVersion: String by rootProject.extra
+val javaVersion = JavaVersion.toVersion(jdkVersion)
 
 subprojects {
-	apply<KotlinDslPlugin>()
-	configure<KotlinDslPluginOptions> {
-		experimentalWarning.set(false)
-	}
+	apply<KotlinPluginWrapper>()
 
 	repositories {
 		gradlePluginPortal()
+		mavenCentral()
 	}
 
-	if (name == "common" || name == "backend-plugins") {
-		return@subprojects
-	}
-
-	apply<PublishPlugin>()
-	apply<MavenPublishPlugin>()
-	binTrayCredentials()?.let {
-		apply<BintrayPlugin>()
-		configure<BintrayExtension> {
-			user = it.first
-			key = it.second
-			override = true
-			publish = true
-			setPublications("pluginMaven")
-			pkg.apply {
-				repo = group as String
-				name = this@subprojects.name
-			}
-		}
+	configure<JavaPluginExtension> {
+		sourceCompatibility = javaVersion
+		targetCompatibility = javaVersion
 	}
 
 	tasks {
-		withType(Test::class) {
+		withType<KotlinJvmCompile> {
+			kotlinOptions {
+				jvmTarget = jdkVersion
+				apiVersion = "1.5"
+				languageVersion = "1.5"
+				freeCompilerArgs = listOf("-Xjsr305=strict")
+			}
+		}
+
+		withType<Test> {
 			useJUnitPlatform()
-			testLogging {
-				showExceptions = true
-				showStandardStreams = true
-				events = setOf(FAILED, PASSED)
-				exceptionFormat = FULL
-			}
 		}
 	}
-
-	dependencies {
-		"testImplementation"(project(":root-module-plugin"))
-		if (name != "common-tests") {
-			"testImplementation"(project(":common:common-tests"))
-		}
-	}
-
-	configurations.all {
-		resolutionStrategy {
-
-			eachDependency {
-				when (requested.group) {
-					"io.kotest" -> useVersion(kotestVersion)
-				}
-			}
-		}
-	}
-}
-
-gradleRunConfiguration(cfgSubName = "publish (local)", tasks = listOf("check", "publishToMavenLocal")) {
-	scriptParameters = "-x test --rerun-tasks"
-}
-gradleRunConfiguration(cfgSubName = "publish", tasks = listOf("check", "bintrayUpload"))
-gradleRunConfiguration(cfgSubName = "publish (without tests)", tasks = listOf("check", "bintrayUpload")) {
-	scriptParameters = "-x test"
-}
-gradleRunConfiguration(
-	cfgSubName = "resources",
-	tasks = listOf("processResources", "generatePomFileForPluginMavenPublication", "generateMetadataFileForPluginMavenPublication")
-) {
-	scriptParameters = "--rerun-tasks"
 }

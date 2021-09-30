@@ -1,0 +1,7 @@
+= Gradle fullstack plugins
+
+image:https://img.shields.io/badge/JDK-15-green?logo=java["JDK 15"]
+image:https://img.shields.io/badge/kotlin-1.5-blue.svg?logo=kotlin["Kotlin 1.5"]
+
+'''
+

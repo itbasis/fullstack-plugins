@@ -1,7 +1,11 @@
-//plugins {
-//	`kotlin-dsl`
-//}
-//
-//configure<KotlinDslPluginOptions> {
-//	experimentalWarning.set(false)
-//}
+plugins {
+	`maven-publish`
+}
+
+publishing {
+	publications {
+		create<MavenPublication>("maven") {
+			from(components["java"])
+		}
+	}
+}

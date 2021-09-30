@@ -1,0 +1,10 @@
+[versions]
+kotest = "4.6.3"
+
+[libraries]
+detekt = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version = "1.18.1" }
+kotestJUnit5 = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }
+kotestAssertionsCore = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
+
+[bundles]
+kotestBase = ["kotestJUnit5", "kotestAssertionsCore"]

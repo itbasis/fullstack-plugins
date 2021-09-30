@@ -1,9 +1,30 @@
 @file:Suppress("UnstableApiUsage")
 
+import org.gradle.api.internal.FeaturePreviews.Feature.TYPESAFE_PROJECT_ACCESSORS
+import org.gradle.api.internal.FeaturePreviews.Feature.VERSION_CATALOGS
+
 rootProject.name = "itbasis-fullstack-plugins"
 
+enableFeaturePreview(TYPESAFE_PROJECT_ACCESSORS.name)
+enableFeaturePreview(VERSION_CATALOGS.name)
+
+pluginManagement {
+	repositories {
+		gradlePluginPortal()
+		mavenCentral()
+	}
+	resolutionStrategy {
+		eachPlugin {
+// 			println("use plugin: ${this.requested}")
+// 			when (requested.id.id) {
+// 				"org.gradle.kotlin.kotlin-dsl" -> useVersion("2.1.7")
+// 			}
+		}
+	}
+}
+
 plugins {
-	`gradle-enterprise`
+	id("com.gradle.enterprise") version "3.7"
 }
 
 gradleEnterprise {
@@ -13,38 +34,12 @@ gradleEnterprise {
 	}
 }
 
-fun includeSubmodules(modulesRootDirName: String) {
-	val modulesRootDir = rootDir.resolve(modulesRootDirName.replace(":", File.separator))
-	require(modulesRootDir.isDirectory) { "$modulesRootDir is not directory" }
-
-	modulesRootDir.listFiles { dir, name ->
-		val moduleDir = dir.resolve(name)
-		return@listFiles moduleDir.isDirectory && moduleDir.resolve("build.gradle.kts").isFile
-	}?.forEach { moduleDir ->
-		include("$modulesRootDirName:${moduleDir.name}")
-	}
-}
-
+//
 include(
 	":common:common-core",
 	":common:common-ide-idea",
 	":common:common-kotlin",
 	":common:common-tests"
 )
-
-include(":backend-plugins:backend-base-plugin")
-
-include(
-	":backend-plugins:backend-koin",
-	":backend-plugins:backend-koin:backend-koin-base-plugin",
-	":backend-plugins:backend-koin:backend-koin-library-plugin",
-	":backend-plugins:backend-koin:backend-koin-service-plugin"
-)
-
-//include(
-//	":flutter-plugins:flutter-core-plugin",
-//	":flutter-plugins:flutter-library-plugin",
-//	":flutter-plugins:flutter-app-plugin"
-//)
-
-include("root-module-plugin")
+//
+include(":root-module-plugin")

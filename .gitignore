@@ -7,5 +7,12 @@ build
 .idea/*
 !.idea/vcs.xml
 !.idea/externalDependencies.xml
+!.idea/gradle.xml
+!.idea/detekt.xml
+!.idea/encodings.xml
+!.idea/GitLinkConfig.xml
 
 tmp.*
+off.*
+
+/*.html

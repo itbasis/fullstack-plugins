@@ -5,13 +5,16 @@ import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier
 import org.gradle.kotlin.dsl.apply
 import org.gradle.testfixtures.ProjectBuilder
-import ru.itbasis.gradle.rootmodule.RootModulePlugin
+import ru.itbasis.gradle.fullstack.root.RootModulePlugin
 
 fun initTestProject(projectBuilderConfig: ProjectBuilder.() -> Unit = {}): Project {
 	val projectBuilder = ProjectBuilder.builder()
 	projectBuilder.apply(projectBuilderConfig)
 
 	val project = projectBuilder.build()
+
+	project.repositories.add(project.repositories.mavenCentral())
+
 	project.pluginManager.apply(RootModulePlugin::class)
 	return project
 }

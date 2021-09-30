@@ -1,20 +1,24 @@
-configure<GradlePluginDevelopmentExtension> {
-	plugins {
-		register("backend-common-plugin") {
-			id = "ru.itbasis.gradle.backend-common-plugin"
-			implementationClass = "ru.itbasis.gradle.common.kotlin.BackendCommonPlugin"
+plugins {
+	id("org.gradle.kotlin.kotlin-dsl")
+	`maven-publish`
+}
+
+publishing {
+	publications {
+		create<MavenPublication>("maven") {
+			from(components["java"])
 		}
 	}
 }
 
-val detektVersion = extra["detekt.version"] as String
-
 dependencies {
-	api(kotlin("gradle-plugin"))
+	compileOnly(kotlin("gradle-plugin"))
+	compileOnly(gradleKotlinDsl())
 
-	api(project(":common:common-core"))
+	implementation(projects.common.commonCore)
+	implementation(projects.common.commonIdeIdea)
 
-	api("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
+	api(libs.detekt)
 
-	testImplementation(project(":common:common-tests"))
+	testImplementation(projects.common.commonTests)
 }
